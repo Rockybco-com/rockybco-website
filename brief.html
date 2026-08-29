@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Brief — Rockybco</title>
+  <meta name="description" content="Start your brand project with Rockybco. Fill out the brief and hear back within 24 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/brief.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="brief-header">
+    <a href="index.html" class="logo">ROCKYBCO</a>
+    <span class="header-tag">Client Brief</span>
+  </header>
+
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen" class="screen intro-screen active">
+    <div class="intro-inner">
+      <span class="mono-label">BEFORE WE BUILD</span>
+      <h1>Tell me about your brand.</h1>
+      <p class="intro-desc">
+        This brief helps me understand exactly what you need before we start.
+        It takes about 8 minutes. The more specific you are, the sharper the output.
+      </p>
+      <div class="intro-meta">
+        <span>6 steps</span>
+        <span class="dot">·</span>
+        <span>~8 minutes</span>
+        <span class="dot">·</span>
+        <span>Confidential</span>
+      </div>
+      <button class="btn-primary" id="btn-start">Start Brief <span class="arrow">→</span></button>
+    </div>
+  </div>
+
+  <!-- FORM SCREEN -->
+  <div id="form-screen" class="screen form-screen">
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="progress-label mono-label" id="progress-label">Step 1 of 6</span>
+    </div>
+
+    <!-- The actual Netlify form — wraps all steps -->
+    <form
+      id="brief-form"
+      name="rockybco-client-brief"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+      action="success.html"
+    >
+      <!-- Netlify hidden fields -->
+      <input type="hidden" name="form-name" value="rockybco-client-brief" />
+      <div style="display:none"><input name="bot-field" /></div>
+
+      <!-- ═══════════════════════════════ STEP 1 ═══════════════════════════════ -->
+      <div class="form-step active" data-step="1">
+        <div class="step-head">
+          <span class="step-num mono-label">01</span>
+          <h2>About You</h2>
+          <p>Let's start with the basics. Who am I working with?</p>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="full-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="full-name" name="full-name" placeholder="Your full name" required />
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="whatsapp">WhatsApp Number <span class="req">*</span></label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="+234 800 000 0000" required />
+            </div>
+            <div class="field">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="brand-name">Brand / Business Name <span class="req">*</span></label>
+            <input type="text" id="brand-name" name="brand-name" placeholder="What is your brand called?" required />
+          </div>
+
+          <div class="field">
+            <label for="industry">Industry <span class="req">*</span></label>
+            <select id="industry" name="industry" required>
+              <option value="" disabled selected>Select your industry</option>
+              <option>Beauty &amp; Skincare</option>
+              <option>Fashion &amp; Clothing</option>
+              <option>Food &amp; Beverage</option>
+              <option>Health &amp; Wellness</option>
+              <option>Technology / Startup</option>
+              <option>Finance</option>
+              <option>Coaching &amp; Consulting</option>
+              <option>Real Estate</option>
+              <option>Events &amp; Entertainment</option>
+              <option>E-commerce</option>
+              <option>Education</option>
+              <option>Creative / Agency</option>
+              <option>Web3 / Crypto</option>
+              <option>Logistics &amp; Transport</option>
+              <option>Media &amp; Publishing</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="business-description">What does your business do? <span class="req">*</span></label>
+            <textarea id="business-description" name="business-description" rows="3" placeholder="Describe what you do and who you serve in 1–2 sentences." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="website-social">Website or Social Media <span class="opt">(optional)</span></label>
+            <input type="text" id="website-social" name="website-social" placeholder="https:// or @handle" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════ STEP 2 ═══════════════════════════════ -->
+      <div class="form-step" data-step="2">
+        <div class="step-head">
+          <span class="step-num mono-label">02</span>
+          <h2>Your Audience</h2>
+          <p>Understanding who you serve helps me build a brand that speaks directly to them.</p>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="ideal-customer">Who is your ideal customer? <span class="req">*</span></label>
+            <textarea id="ideal-customer" name="ideal-customer" rows="3" placeholder="Be specific — age, gender, location, lifestyle, what they care about." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="problem-solved">What problem do you solve for them? <span class="req">*</span></label>
+            <textarea id="problem-solved" name="problem-solved" rows="3" placeholder="What changes in their life after working with you or buying from you?" required></textarea>
+          </div>
+
+          <div class="field">
+            <label>Where is your audience primarily located? <span class="req">*</span></label>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="audience-location" value="Lagos" /><span>Lagos</span></label>
+              <label class="check-item"><input type="checkbox" name="audience-location" value="Abuja" /><span>Abuja</span></label>
+              <label class="check-item"><input type="checkbox" name="audience-location" value="Other Nigeria" /><span>Other Nigeria</span></label>
+              <label class="check-item"><input type="checkbox" name="audience-location" value="Diaspora" /><span>Diaspora</span></label>
+              <label class="check-item"><input type="checkbox" name="audience-location" value="International" /><span>International</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Income level of your ideal customer <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-item"><input type="radio" name="income-level" value="Low (under ₦500K/year)" /><span>Low (under ₦500K/year)</span></label>
+              <label class="radio-item"><input type="radio" name="income-level" value="Middle (₦500K - ₦2M/year)" /><span>Middle (₦500K - ₦2M/year)</span></label>
+              <label class="radio-item"><input type="radio" name="income-level" value="High (₦2M+/year)" /><span>High (₦2M+/year)</span></label>
+              <label class="radio-item"><input type="radio" name="income-level" value="Varies" /><span>Varies</span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════ STEP 3 ═══════════════════════════════ -->
+      <div class="form-step" data-step="3">
+        <div class="step-head">
+          <span class="step-num mono-label">03</span>
+          <h2>Brand Identity</h2>
+          <p>What makes your brand different? What do you want people to feel?</p>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label for="brand-story">Your brand story <span class="req">*</span></label>
+            <textarea id="brand-story" name="brand-story" rows="3" placeholder="Why did you start this? What's your mission?" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="brand-personality">Brand personality <span class="req">*</span></label>
+            <p class="field-hint">Pick 3–5 words that describe how your brand feels (e.g., bold, minimal, playful, premium)</p>
+            <textarea id="brand-personality" name="brand-personality" rows="2" placeholder="e.g., Bold · Minimal · Premium · Innovative" required></textarea>
+          </div>
+
+          <div class="field">
+            <label>What's your visual vibe? <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-item"><input type="radio" name="brand-vibe" value="Minimal & Clean" /><span>Minimal &amp; Clean</span></label>
+              <label class="radio-item"><input type="radio" name="brand-vibe" value="Bold & Loud" /><span>Bold &amp; Loud</span></label>
+              <label class="radio-item"><input type="radio" name="brand-vibe" value="Luxury & Premium" /><span>Luxury &amp; Premium</span></label>
+              <label class="radio-item"><input type="radio" name="brand-vibe" value="Playful & Creative" /><span>Playful &amp; Creative</span></label>
+              <label class="radio-item"><input type="radio" name="brand-vibe" value="Modern & Tech" /><span>Modern &amp; Tech</span></label>
+              <label class="radio-item"><input type="radio" name="brand-vibe" value="Not sure yet" /><span>Not sure yet</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="primary-colors">Any colors you love or hate? <span class="opt">(optional)</span></label>
+            <textarea id="primary-colors" name="primary-colors" rows="2" placeholder="Love: Deep blues, gold accents / Avoid: Bright neons"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════ STEP 4 ═══════════════════════════════ -->
+      <div class="form-step" data-step="4">
+        <div class="step-head">
+          <span class="step-num mono-label">04</span>
+          <h2>Project Goals</h2>
+          <p>What do you want this brand to accomplish?</p>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label>Primary goal for this brand <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-item"><input type="radio" name="project-goal" value="Launch Something New" /><span>Launch Something New</span></label>
+              <label class="radio-item"><input type="radio" name="project-goal" value="Rebrand / Refresh" /><span>Rebrand / Refresh</span></label>
+              <label class="radio-item"><input type="radio" name="project-goal" value="Attract Better Clients" /><span>Attract Better Clients</span></label>
+              <label class="radio-item"><input type="radio" name="project-goal" value="Raise Investment / Credibility" /><span>Raise Investment / Credibility</span></label>
+              <label class="radio-item"><input type="radio" name="project-goal" value="Scale Internationally" /><span>Scale Internationally</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Rate your current brand <span class="req">*</span></label>
+            <p class="field-hint">1 = We have nothing at all &nbsp;·&nbsp; 5 = Something exists but needs serious work</p>
+            <div class="rating-row">
+              <label class="rating-item"><input type="radio" name="brand-rating" value="1" /><span class="rating-num">1</span><small>Nothing</small></label>
+              <label class="rating-item"><input type="radio" name="brand-rating" value="2" /><span class="rating-num">2</span><small>Weak</small></label>
+              <label class="rating-item"><input type="radio" name="brand-rating" value="3" /><span class="rating-num">3</span><small>Average</small></label>
+              <label class="rating-item"><input type="radio" name="brand-rating" value="4" /><span class="rating-num">4</span><small>Decent</small></label>
+              <label class="rating-item"><input type="radio" name="brand-rating" value="5" /><span class="rating-num">5</span><small>Needs polish</small></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════ STEP 5 ═══════════════════════════════ -->
+      <div class="form-step" data-step="5">
+        <div class="step-head">
+          <span class="step-num mono-label">05</span>
+          <h2>Project Details</h2>
+          <p>The specifics that shape how we work together.</p>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <label>What do you need? <span class="req">*</span></label>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Logo Design" /><span>Logo Design</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Full Brand Identity" /><span>Full Brand Identity</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Brand Guidelines" /><span>Brand Guidelines</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Website / Landing Page" /><span>Website / Landing Page</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Social Media Kit" /><span>Social Media Kit</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Business Card" /><span>Business Card</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Brand Strategy" /><span>Brand Strategy</span></label>
+              <label class="check-item"><input type="checkbox" name="services-needed" value="Not sure yet" /><span>Not sure yet</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Your deadline <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-item"><input type="radio" name="deadline" value="ASAP / 1 week" /><span>ASAP / 1 week</span></label>
+              <label class="radio-item"><input type="radio" name="deadline" value="2 weeks" /><span>2 weeks</span></label>
+              <label class="radio-item"><input type="radio" name="deadline" value="3–4 weeks" /><span>3–4 weeks</span></label>
+              <label class="radio-item"><input type="radio" name="deadline" value="1–2 months" /><span>1–2 months</span></label>
+              <label class="radio-item"><input type="radio" name="deadline" value="Flexible" /><span>Flexible</span></label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Budget range <span class="req">*</span></label>
+            <div class="radio-grid">
+              <label class="radio-item"><input type="radio" name="budget" value="Under ₦150K" /><span>Under ₦150K</span></label>
+              <label class="radio-item"><input type="radio" name="budget" value="₦150K – ₦320K" /><span>₦150K – ₦320K</span></label>
+              <label class="radio-item"><input type="radio" name="budget" value="₦320K – ₦500K" /><span>₦320K – ₦500K</span></label>
+              <label class="radio-item"><input type="radio" name="budget" value="₦500K+" /><span>₦500K+</span></label>
+              <label class="radio-item"><input type="radio" name="budget" value="International (USD / GBP)" /><span>International (USD / GBP)</span></label>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="brands-love">Brands you love the look of <span class="opt">(optional)</span></label>
+              <textarea id="brands-love" name="brands-love" rows="2" placeholder="What brands have visuals you admire?"></textarea>
+            </div>
+            <div class="field">
+              <label for="brands-avoid">Brands you want to avoid looking like <span class="opt">(optional)</span></label>
+              <textarea id="brands-avoid" name="brands-avoid" rows="2" placeholder="What looks or feels are off-limits?"></textarea>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Upload references <span class="opt">(optional — PNG, JPG, or PDF · Max 10MB)</span></label>
+            <div class="upload-zone" id="upload-zone">
+              <input type="file" id="references" name="references" accept=".png,.jpg,.jpeg,.pdf" multiple />
+              <div class="upload-inner">
+                <span class="upload-icon">↑</span>
+                <span class="upload-text">Drop files here or click to upload</span>
+                <small>PNG · JPG · PDF — Max 10MB per file</small>
+              </div>
+              <div id="file-list" class="file-list"></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="additional-info">Anything else I should know? <span class="opt">(optional)</span></label>
+            <textarea id="additional-info" name="additional-info" rows="3" placeholder="Context, constraints, specific ideas, or anything that helps me understand your project better."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════ STEP 6 ═══════════════════════════════ -->
+      <div class="form-step" data-step="6">
+        <div class="step-head">
+          <span class="step-num mono-label">06</span>
+          <h2>Almost done.</h2>
+          <p>Review your brief and confirm before sending.</p>
+        </div>
+
+        <div class="summary" id="summary">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="confirm-checks">
+          <label class="confirm-item">
+            <input type="checkbox" id="confirm-accuracy" />
+            <span>All information I have provided is accurate to the best of my knowledge.</span>
+          </label>
+          <label class="confirm-item">
+            <input type="checkbox" id="confirm-confidential" />
+            <span>I understand my information is kept confidential and used only for this project.</span>
+          </label>
+        </div>
+
+        <div class="response-note">
+          <span class="mono-label">WHAT HAPPENS NEXT</span>
+          <p>After submitting, you will hear back within <strong>24 hours</strong> via WhatsApp or email.</p>
+        </div>
+      </div>
+
+    </form><!-- end #brief-form -->
+
+    <!-- Navigation buttons -->
+    <div class="form-nav">
+      <button class="btn-back" id="btn-back" type="button">← Back</button>
+      <button class="btn-next" id="btn-next" type="button">Next →</button>
+      <button class="btn-submit-final hidden" id="btn-submit" type="button">Submit Brief →</button>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Rockybco</div>
+        <div class="footer-tagline">Precision. Identity. Signal.</div>
+        <a href="assets/pdf/rockybco-portfolio-cv.pdf" class="btn btn-ghost" download target="_blank" rel="noopener">Download My Portfolio &amp; CV</a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:Rockyb.systems@gmail.com" aria-label="Email"><span class="icon icon-email"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span></a>
+        <a href="https://wa.me/2348156876258" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="icon icon-whatsapp"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.487 1.333 5.004L2 22l5.133-1.347a9.923 9.923 0 004.877 1.28h.005c5.507 0 9.99-4.478 9.99-9.985 0-2.667-1.039-5.176-2.926-7.062A9.926 9.926 0 0012.012 2zm5.827 14.167c-.247.695-1.226 1.272-1.996 1.439-.53.114-1.222.204-3.553-.761-2.981-1.234-4.901-4.264-5.05-4.462-.147-.198-1.206-1.607-1.206-3.065 0-1.459.761-2.176 1.03-2.47.27-.295.589-.368.785-.368.196 0 .393.002.564.01.182.008.428-.069.67.511.247.592.836 2.04.91 2.188.074.148.123.321.025.518-.098.197-.148.321-.295.494-.148.173-.31.387-.442.52-.148.148-.302.309-.13.605.173.296.767 1.267 1.65 2.054 1.135 1.011 2.091 1.325 2.387 1.472.296.148.468.124.64-.074.173-.198.739-.863.935-1.16.197-.296.394-.247.665-.148.271.099 1.722.813 2.017.961.295.148.492.222.565.345.074.123.074.717-.173 1.412z"/></svg></span></a>
+        <a href="https://linkedin.com/in/iamrockyb" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon icon-linkedin"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/></svg></span></a>
+      </div>
+    </div>
+    <div class="container footer-bottom">&copy; 2026 Rockybco. All rights reserved.</div>
+  </footer>
+
+  <div id="success-screen" class="screen success-screen">
+    <div class="success-inner">
+      <div class="success-check">✓</div>
+      <h2>Brief received.</h2>
+      <p>You will hear back within 24 hours via WhatsApp or email. In the meantime, feel free to look through past work.</p>
+      <a href="index.html" class="btn-primary">Back to Rockybco →</a>
+    </div>
+  </div>
+
+  <script src="./brief.js"></script>
+</body>
+</html>

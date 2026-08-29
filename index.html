@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Rockybco — Brand Identity & Web Design</title>
+  <link href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet'>
+  <link rel='stylesheet' href='css/style.css'>
+  <style>
+    /* ===== HOME PAGE STYLES ===== */
+    .hero {
+      background: var(--teal);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease-out 0s forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--font-head);
+      font-size: clamp(48px, 5.5vw, 80px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease-out 0.15s forwards;
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--cream);
+      opacity: 0.85;
+      margin-bottom: 36px;
+      max-width: 440px;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease-out 0.3s forwards;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease-out 0.45s forwards;
+    }
+
+    .hero-photo {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      opacity: 0;
+      transform: translateX(30px);
+      animation: fadeRight 0.7s ease-out 0.3s forwards;
+    }
+
+    .hero-photo img {
+      max-height: 520px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Marquee */
+    .marquee-strip {
+      background: var(--cream);
+      overflow: hidden;
+      padding: 14px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marqueeScroll 20s linear infinite;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Bio (Pale Cream Background) */
+    .bio-section {
+      background: var(--cream);
+      color: var(--teal);
+      padding: 100px 0;
+    }
+
+    .bio-inner {
+      display: grid;
+      grid-template-columns: 65% 35%;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .bio-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bio-text {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--teal);
+      opacity: 0.95;
+    }
+
+    .bio-text p {
+      margin-bottom: 20px;
+    }
+
+    .bio-photo img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+    }
+
+    /* Featured Work (Dark Teal) */
+    .featured {
+      background: var(--teal);
+      padding: 100px 0;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .project-card .thumb {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--teal-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .project-card .thumb img,
+    .project-card .thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-card .thumb.video-thumb {
+      position: relative;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--cream);
+    }
+
+    .project-card .tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .featured-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    /* Services (Pale Cream) */
+    .services {
+      background: var(--cream);
+      color: var(--teal);
+      padding: 100px 0;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-card {
+      background: var(--teal-light);
+      color: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+    }
+
+    .service-card.highlight {
+      border-color: var(--border-active);
+    }
+
+    .service-card .tier {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cream-dim);
+      margin-bottom: 8px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .service-card .intro {
+      font-family: var(--font-body);
+      font-size: 15px;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+
+    .service-card ul {
+      margin-bottom: 24px;
+    }
+
+    .service-card ul li {
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0.85;
+    }
+
+    .service-card .ideal {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      opacity: 0.7;
+      margin: 16px 0;
+    }
+
+    .service-card .timeline {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cream-dim);
+      margin-bottom: 20px;
+    }
+
+    .service-note {
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--teal-dim);
+      margin-top: 32px;
+    }
+
+    /* Testimonials (Dark Teal) */
+    .testimonials {
+      background: var(--teal);
+      padding: 100px 0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .testimonial-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 12px;
+      }
+
+      .testimonial-card {
+        min-width: 300px;
+        scroll-snap-align: start;
+      }
+    }
+
+    .testimonial-card {
+      background: var(--teal-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      color: var(--cream);
+    }
+
+    .testimonial-card p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .testimonial-card .attr {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cream-dim);
+    }
+
+    /* FAQ (Pale Cream) */
+    .faq {
+      background: var(--cream);
+      color: var(--teal);
+      padding: 100px 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--teal-border);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 24px 0;
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 600;
+      text-align: left;
+      color: var(--teal);
+    }
+
+    .faq-icon {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 24px;
+    }
+
+    .faq-answer p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--teal-dim);
+    }
+
+    /* Contact (Dark Teal) */
+    .contact {
+      background: var(--teal);
+      padding: 100px 0;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-form-embed {
+      border: 1px dashed var(--border-active);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .contact-form-embed p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+
+    .contact-info p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--cream);
+      transition: opacity var(--transition);
+    }
+
+    .contact-links a:hover {
+      opacity: 0.7;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(1, 62, 55, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--teal);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 960px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      color: var(--cream);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--teal-light);
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      font-size: 18px;
+      color: var(--cream);
+      z-index: 10;
+    }
+
+    .modal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    @media (max-width: 768px) {
+      .modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-visuals {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: var(--teal-light);
+      border-right: 1px solid var(--border);
+    }
+
+    .modal-visuals img {
+      border-radius: var(--radius);
+      width: 100%;
+    }
+
+    .modal-story {
+      padding: 40px;
+    }
+
+    .modal-story h2 {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--cream);
+    }
+
+    .modal-story .label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cream-dim);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .modal-story p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      opacity: 0.9;
+      margin-bottom: 16px;
+      color: var(--cream);
+    }
+
+    .modal-story .swatches {
+      display: flex;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+
+    .modal-story .typo {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cream-dim);
+      margin: 8px 0;
+    }
+  </style>
+</head>
+
+<body><!-- HEADER -->
+  <header class='site-header'>
+    <div class='container nav-inner'><a href='index.html' class='logo-link'><span class='logo-fallback'>ROCKYBCO</span></a>
+      <nav class='nav-links'><a href='index.html' class='nav-link active'>Home</a><a href='work.html' class='nav-link'>Portfolio</a><a href='about.html' class='nav-link'>About</a><a href='brief.html' class='nav-link'>Contact</a><a href='brief.html' class='nav-cta'>Start a Project</a></nav><button class='hamburger' aria-label='Menu'><span></span><span></span><span></span></button>
+    </div>
+    <div class='mobile-nav'><a href='index.html'>Home</a><a href='work.html'>Portfolio</a><a href='about.html'>About</a><a href='brief.html'>Contact</a><a href='brief.html' class='nav-cta'>Start a Project</a></div>
+  </header><!-- HERO -->
+  <section class='hero'>
+    <div class='container hero-inner'>
+      <div class='hero-text'>
+        <div class='hero-label'>Brand Identity &middot; Web Design</div>
+        <h1 class='hero-headline'>Precision.<br>Identity.<br>Signal.</h1>
+        <p class='hero-sub'>Brand identity and web design for founders building things that matter.</p>
+        <div class='hero-btns'><a href='brief.html' class='btn btn-primary'>Start a Project &rarr;</a><a href='brief.html' class='btn btn-ghost'>Get in Touch &rarr;</a></div>
+      </div>
+      <div class='hero-photo'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi — Rockyb, Brand Identity Designer' width='400' height='520' loading='eager'></div>
+    </div>
+  </section><!-- MARQUEE -->
+  <div class='marquee-strip'>
+    <div class='marquee-track'>Brand Identity &middot; Logo Design &middot; Vibe Coding &middot; Web3 &middot; Brand Strategy &middot; Precision &middot; Identity &middot; Signal &middot;&nbsp;&nbsp;&nbsp;&nbsp;Brand Identity &middot; Logo Design &middot; Vibe Coding &middot; Web3 &middot; Brand Strategy &middot; Precision &middot; Identity &middot; Signal &middot;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+  </div><!-- BIO -->
+  <section class='bio-section section'>
+    <div class='container bio-inner reveal'>
+      <div class='bio-text'><span class='section-label on-cream'>About</span>
+        <p>I'm a brand identity designer and web developer building systems for founders and Web3 projects that move markets. My work sits at the intersection of precision design and technical execution; every brand I build isn't just beautiful, it's built to scale.</p>
+        <p>Over the last two years, I've designed brand identities and custom-coded websites for brands across Africa, Europe, and North America. From early-stage founders to established Web3 protocols, my process is straightforward: understand your market position, design a system that signals that position, and deliver assets that work across every touchpoint.</p>
+        <p>I am currently collaborating with founders across Lagos, Abuja, and international markets. Let's build something that signals who you are and where you're headed.</p>
+      </div>
+      <div class='bio-photo'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi portrait' width='350' height='450' loading='lazy'></div>
+    </div>
+  </section><!-- FEATURED PROJECTS -->
+  <section class='featured section'>
+    <div class='container'><span class='section-label reveal'>Recent Work</span>
+      <h2 class='section-headline reveal'>Past Projects</h2>
+      <div class='project-grid stagger-children' id='featuredGrid'>
+        <div class='project-card' data-modal='noor'>
+          <div class='thumb'><img src='assets/projects/noor-collection/noor-thumbnail.png' alt='Noor Collections brand identity' width='400' height='250' loading='lazy'></div>
+          <h3>Noor Collections</h3><span class='tag'>Brand Identity</span>
+        </div>
+        <div class='project-card' data-modal='ceeravo'>
+          <div class='thumb'><img src='assets/projects/ceeravo/ceeravo-thumbnail.png' alt='Ceeravo brand identity' width='400' height='250' loading='lazy'></div>
+          <h3>Ceeravo</h3><span class='tag'>Brand Identity</span>
+        </div>
+        <div class='project-card' data-modal='totetales'>
+          <div class='thumb'><img src='assets/projects/totetales/totetales-thumbnail.png' alt='Totetales by Thiffeh brand identity' width='400' height='250' loading='lazy'></div>
+          <h3>Totetales by Thiffeh</h3><span class='tag'>Brand Identity</span>
+        </div>
+        <div class='project-card' data-modal='brave'>
+          <div class='thumb'><img src='assets/projects/website/brave-nexus/thumbnail.png' alt='Brave Nexus website' width='400' height='250' loading='lazy'></div>
+          <h3>Brave Nexus</h3><span class='tag'>Website</span>
+        </div>
+        <div class='project-card' data-modal='denshi'>
+          <div class='thumb video-thumb'><video src='assets/web3/denshi.mp4' muted playsinline preload='metadata' poster='assets/web3/denshi-poster.jpeg' onerror="this.poster='assets/web3/denshi-poster.jpeg'; this.style.display='block';"></video><span class='play-icon' style='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.5);pointer-events:none;'>&#9654;</span></div>
+          <h3>Denshi</h3><span class='tag'>Video</span>
+        </div>
+        <div class='project-card' data-modal='beekeeper'>
+          <div class='thumb video-thumb'><video src='assets/web3/beekeeper.mp4' muted playsinline preload='metadata' poster='assets/web3/beekeeper-poster.png' onerror="this.poster='assets/web3/beekeeper-poster.png'; this.style.display='block';"></video><span class='play-icon' style='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.5);pointer-events:none;'>&#9654;</span></div>
+          <h3>Beekeeper</h3><span class='tag'>Video</span>
+        </div>
+      </div>
+      <div class='featured-cta reveal'><a href='work.html' class='btn btn-ghost'>View All Projects &rarr;</a></div>
+    </div>
+  </section><!-- SERVICES -->
+  <section class='services section' id='services'>
+    <div class='container'><span class='section-label reveal on-cream'>Our Services</span>
+      <h2 class='section-headline reveal on-cream'>Three Ways to Work With Us</h2>
+      <div class='service-grid stagger-children'>
+        <div class='service-card'>
+          <div class='tier'>The Foundation</div>
+          <h3>Origin</h3>
+          <p class='intro'>For brands starting from zero. Origin gives you the core visual identity you need to show up with clarity and confidence.</p>
+          <ul>
+            <li>Logo design</li>
+            <li>Logo color variations</li>
+            <li>Typography system</li>
+            <li>Brand usage guidelines (1-page PDF)</li>
+            <li>2 brand mockups</li>
+            <li>2 revision rounds</li>
+            <li>Final files: PNG, PDF</li>
+          </ul>
+          <p class='ideal'>Ideal for: Early-stage startups, solo founders, new businesses</p>
+          <p class='timeline'>Delivery: 7 Working Days</p><a href='brief.html' class='btn btn-ghost'>Inquire About Origin</a>
+        </div>
+        <div class='service-card highlight'>
+          <div class='tier'>The Full System</div>
+          <h3>Cipher</h3>
+          <p class='intro'>For brands ready to go beyond a logo. Cipher delivers a complete brand identity system — every visual touchpoint, built with precision.</p>
+          <ul>
+            <li>Everything in Origin</li>
+            <li>Multiple logo forms (transparent + alternate)</li>
+            <li>Brand pattern and texture design</li>
+            <li>Brand voice and tone guide</li>
+            <li>Business card design</li>
+            <li>Brand book (digital PDF, 8–12 pages)</li>
+            <li>Full color system with usage rules</li>
+            <li>Typography hierarchy documentation</li>
+            <li>3 brand mockups across touchpoints</li>
+            <li>3 revision rounds</li>
+          </ul>
+          <p class='ideal'>Ideal for: Growing brands, rebranding businesses, funded startups</p>
+          <p class='timeline'>Delivery: 10–14 Working Days</p><a href='brief.html' class='btn btn-ghost'>Inquire About Cipher</a>
+        </div>
+        <div class='service-card'>
+          <div class='tier'>Brand Identity + Coded Presence</div>
+          <h3>Apex</h3>
+          <p class='intro'>For brands that need everything — identity and a digital home. Apex pairs a full brand system with a custom-coded website, built clean and deployed live.</p>
+          <ul>
+            <li>Everything in Cipher</li>
+            <li>21+ page comprehensive brand guideline</li>
+            <li>5+ mockups</li>
+            <li>Custom HTML/CSS/JS website (up to 5 pages)</li>
+            <li>Mobile-responsive across all screens</li>
+            <li>Basic SEO setup</li>
+            <li>Netlify deployment included</li>
+            <li>1 month of minor post-launch edits</li>
+            <li>3 revision rounds</li>
+          </ul>
+          <p class='ideal'>Ideal for: Brands launching seriously, Web3 projects, international clients</p>
+          <p class='timeline'>Delivery: 20–21 Working Days</p><a href='brief.html' class='btn btn-ghost'>Inquire About Apex</a>
+        </div>
+      </div>
+      <p class='service-note'>All packages are priced based on project scope. Get in touch to discuss your brand.</p>
+    </div>
+  </section><!-- TESTIMONIALS -->
+  <section class='testimonials section'>
+    <div class='container'><span class='section-label reveal'>What Clients Say</span>
+      <h2 class='section-headline reveal'>The Work Speaks. So Do They.</h2>
+      <div class='testimonial-grid stagger-children'>
+        <div class='testimonial-card'>
+          <p>Rockyb didn't just design a logo. He handed us an entire brand system we could actually use. The Noor Collections identity feels premium, feminine, and completely ours. Every touchpoint is consistent. That level of thinking is rare.</p>
+          <div class='attr'>— Fawziyah, Founder, Noor Collections</div>
+        </div>
+        <div class='testimonial-card'>
+          <p>We came with an old logo and left with a full luxury brand. The rebrand completely changed how people perceive Vogues by Dehem. We can now price where we deserve to be priced.</p>
+          <div class='attr'>— Dehem, Founder, Vogues by Dehem</div>
+        </div>
+        <div class='testimonial-card'>
+          <p>What impressed me most wasn't just the design. It was how quickly Rockyb understood the brief. Medical branding is high stakes. He got the balance of urgency and authority exactly right.</p>
+          <div class='attr'>— Ceeravo Team</div>
+        </div>
+        <div class='testimonial-card'>
+          <p>We needed a brand that could hold its own on Spotify, YouTube, and Instagram at the same time. Rockyb built exactly that. An identity that scales across every platform without losing its character.</p>
+          <div class='attr'>— Echoes of Campus Team</div>
+        </div>
+        <div class='testimonial-card'>
+          <p>I have worked with Rockyb on multiple projects, and he is genuinely one of the best brand identity designners I have come across. He combines branding, visual identity, creative direction, and vibe coding to create clean, polished websites and digital experiences that feel unique to each brand. I highly recommend him. </p>
+          <div class='attr'>— Ayokunmi, SEO Copywriter and AI Content Strategist</div>
+        </div>
+      </div>
+    </div>
+  </section><!-- FAQ -->
+  <section class='faq section'>
+    <div class='container'><span class='section-label reveal on-cream'>Common Questions</span>
+      <h2 class='section-headline reveal on-cream'>Before You Reach Out</h2>
+      <div class='faq-list reveal'>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What is the difference between Origin, Cipher, and Apex?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Origin is for founders who need immediate brand credibility fast. Cipher is the complete brand identity system for businesses that want every visual touchpoint covered properly. Apex adds a custom-coded website on top of everything in Cipher — for teams that want to launch with the full package.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>How long does a project take?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Origin runs 5 to 7 working days. Cipher takes 10 to 14 working days. Apex, because it includes a full website build, runs 3 to 4 weeks depending on how ready your content is. Timelines are confirmed at the start of every project.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>Do you work with international clients?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Yes. I work with founders across Africa, Europe, and North America. Everything happens remotely with no drop in quality or process.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What do I need to get started?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Not much. After you submit the intake form, I send over a comprehensive brand brief that pulls out everything I need from you. The clearer your answers, the faster and sharper the output.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>Can you work with my existing logo or brand?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Depending on the scope, yes. If what you have is worth building on, I will build on it. If it is holding you back, I will tell you that directly.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>Do you offer payment plans?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Payment structure is discussed during the initial conversation. Reach out and we will work out something that fits your project scope.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What happens after I submit the brief form?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>You get a response within 24 hours via WhatsApp or email. From there, we confirm scope, timeline, and investment. Then the work begins.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- CONTACT / LET'S WORK -->
+  <section class='contact section' id='contact'>
+    <div class='container'><span class='section-label reveal'>Let's Work</span>
+      <h2 class='section-headline reveal'>Ready to Build Something?</h2>
+      <div class='contact-inner reveal'>
+        <div class='contact-form-embed'>
+          <p>The full project intake form guides you through everything I need to understand your brand, goals, and timeline.</p><a href='brief.html' class='btn btn-primary'>Start a Project</a>
+          <div style='margin-top:20px;'><a href='assets/pdf/rockybco-portfolio-cv.pdf' class='btn btn-ghost' download target='_blank' rel='noopener'>Download My Portfolio &amp; CV &rarr;</a></div>
+        </div>
+        <div class='contact-info'>
+          <p>Every serious brand starts with a conversation. Fill the form and I will get back to you within 24 hours.</p>
+          <div class='contact-links'><a href='mailto:Rockyb.systems@gmail.com' aria-label='Email Rockybco'><span class='icon icon-email'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"> <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                          </svg></span></a><a href='https://wa.me/2348156876258' target='_blank' rel='noopener' aria-label='WhatsApp Rockybco'><span class='icon icon-whatsapp'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.487 1.333 5.004L2 22l5.133-1.347a9.923 9.923 0 004.877 1.28h.005c5.507 0 9.99-4.478 9.99-9.985 0-2.667-1.039-5.176-2.926-7.062A9.926 9.926 0 0012.012 2zm5.827 14.167c-.247.695-1.226 1.272-1.996 1.439-.53.114-1.222.204-3.553-.761-2.981-1.234-4.901-4.264-5.05-4.462-.147-.198-1.206-1.607-1.206-3.065 0-1.459.761-2.176 1.03-2.47.27-.295.589-.368.785-.368.196 0 .393.002.564.01.182.008.428-.069.67.511.247.592.836 2.04.91 2.188.074.148.123.321.025.518-.098.197-.148.321-.295.494-.148.173-.31.387-.442.52-.148.148-.302.309-.13.605.173.296.767 1.267 1.65 2.054 1.135 1.011 2.091 1.325 2.387 1.472.296.148.468.124.64-.074.173-.198.739-.863.935-1.16.197-.296.394-.247.665-.148.271.099 1.722.813 2.017.961.295.148.492.222.565.345.074.123.074.717-.173 1.412z" />
+                </svg></span></a><a href='https://linkedin.com/in/iamrockyb' target='_blank' rel='noopener' aria-label='LinkedIn Rockybco'><span class='icon icon-linkedin'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z" />
+                </svg></span></a></div>
+        </div>
+      </div>
+    </div>
+  </section><!-- FOOTER -->
+  <footer class='site-footer'>
+    <div class='container footer-inner'>
+      <div>
+        <div class='footer-brand'>Rockybco</div>
+        <div class='footer-tagline'>Precision. Identity. Signal.</div><a href='assets/pdf/rockybco-portfolio-cv.pdf' class='btn btn-ghost' download target='_blank' rel='noopener'>Download My Portfolio &amp; CV</a>
+      </div>
+      <div class='footer-contact'><a href='mailto:Rockyb.systems@gmail.com' aria-label='Email'><span class='icon icon-email'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg></span></a><a href='https://wa.me/2348156876258' target='_blank' rel='noopener' aria-label="WhatsApp"><span class='icon icon-whatsapp'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.487 1.333 5.004L2 22l5.133-1.347a9.923 9.923 0 004.877 1.28h.005c5.507 0 9.99-4.478 9.99-9.985 0-2.667-1.039-5.176-2.926-7.062A9.926 9.926 0 0012.012 2zm5.827 14.167c-.247.695-1.226 1.272-1.996 1.439-.53.114-1.222.204-3.553-.761-2.981-1.234-4.901-4.264-5.05-4.462-.147-.198-1.206-1.607-1.206-3.065 0-1.459.761-2.176 1.03-2.47.27-.295.589-.368.785-.368.196 0 .393.002.564.01.182.008.428-.069.67.511.247.592.836 2.04.91 2.188.074.148.123.321.025.518-.098.197-.148.321-.295.494-.148.173-.31.387-.442.52-.148.148-.302.309-.13.605.173.296.767 1.267 1.65 2.054 1.135 1.011 2.091 1.325 2.387 1.472.296.148.468.124.64-.074.173-.198.739-.863.935-1.16.197-.296.394-.247.665-.148.271.099 1.722.813 2.017.961.295.148.492.222.565.345.074.123.074.717-.173 1.412z" />
+            </svg></span></a><a href='https://linkedin.com/in/iamrockyb' target='_blank' rel='noopener' aria-label="LinkedIn"><span class='icon icon-linkedin'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z" />
+            </svg></span></a></div>
+    </div>
+    <div class='container footer-bottom'>&copy; 2026 Rockybco. All rights reserved.</div>
+  </footer><!-- PROJECT MODAL -->
+  <div class='modal-overlay' id='projectModal'>
+    <div class='modal-content'><button class='modal-close' aria-label='Close modal'>&times;</button>
+      <div class='modal-body' id='modalBody'></div>
+    </div>
+  </div>
+  <script src='js/nav.js'></script>
+  <script>
+    /* FAQ Accordion */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    }); /* Project Modal Data */
+    const modalData = {
+      noor: {
+        name: 'Noor Collections',
+        label: 'Brand Identity — Wear Your Confidence',
+        swatches: ['#C9A227', '#F5F0E8', '#FAF8F5'],
+        typo: 'Cormorant Garamond + Lato',
+        story: 'Noor Collections is a Nigerian modest-fashion brand targeting young Muslim women who want premium, colorful, and elegant accessories. The challenge was an identity that felt sophisticated while staying warm, feminine, and culturally grounded. I developed a refined visual direction using gold and soft ivory, paired with Cormorant Garamond for elegance and Lato for clean supporting type. The custom NC monogram gives the brand a distinctive signature with an ornamental feel tied to modest fashion. The result is a clean, luxurious identity that positions Noor Collections as established and premium without becoming overcomplicated.',
+        images: ['assets/projects/noor-collection/noor-mockup-1.png', 'assets/projects/noor-collection/noor-mockup-2.png']
+      },
+      ceeravo: {
+        name: 'Ceeravo',
+        label: 'Smart Medical Routing Platform',
+        swatches: ['#041940', '#FA5C08'],
+        typo: 'Avenir Bold + Inter',
+        story: 'Ceeravo is a smart routing and matching platform startup built to synchronize Nigeria hospital network. It tracks facility capacity, specialist availability, and live operational status across clinics and hospitals. The brand needed to be impossible to forget and easy to navigate when a user is in full panic. Too subtle and it disappears under pressure. Too complex and it slows down a paramedic trying to find a route in ten seconds. I replaced passive medical symbols with an expanding C, a radar grid, and a location pin to create a sharp, memorable visual beacon that signals real-time routing. Deep Navy carries trust. Vibrant Orange is reserved strictly for emergency CTAs and live pins, giving panicked eyes an instant visual target. Avenir Bold and Inter strip out all non-essential clutter so users can scan critical data like bed counts and queue times and act immediately.',
+        images: ['assets/projects/ceeravo/ceeravo-mockup-1.png', 'assets/projects/ceeravo/ceeravo-mockup-2.png'],
+        pdf: 'assets/pdf/ceeravo-brand-identity.pdf'
+      },
+      totetales: {
+        name: 'Totetales by Thiffeh',
+        label: 'Nigerian Tote Bag Brand',
+        swatches: ['#000000', '#FFFFFF', '#0A1F44'],
+        typo: 'Custom wordmark',
+        story: 'Totetales by Thiffeh is a Nigerian tote bag brand for students and office workers who need practical, stylish bags every day. The challenge was an identity that felt young, functional, and memorable while standing out in a competitive market. I built the identity around the product itself. A subtle tote-bag handle is integrated directly into the Totetales wordmark, paired with bold condensed typography and a clean black, white, and deep blue palette. The brand communicates exactly what it sells without relying on a complicated icon. Clean, versatile, easy to recognize across every surface.',
+        images: ['assets/projects/totetales/totetales-mockup-1.png', 'assets/projects/totetales/totetales-mockup-2.png']
+      },
+      vogues: {
+        name: 'Vogues by Dehem',
+        label: 'Luxury Footwear and Leatherware',
+        swatches: ['#0A0A0A', '#FFF9E6', '#8B4513', '#C9A227'],
+        typo: 'Editorial serif + Sans',
+        story: 'Vogues by Dehem is a Lagos-based luxury footwear and leatherware brand. I built them a complete, end-to-end brand identity system and designed their web platform to command immediate respect. A sharp, scalable monogram engineered for leather stamping and luxury packaging replaced the old mark.',
+        images: ['assets/projects/vogues-by-dehem/vogues-by-dehem-mockup-1.png', 'assets/projects/vogues-by-dehem/vogues-by-dehem-mockup-2.png'],
+        pdf: 'assets/pdf/vogues-by-dehem-brand-identity.pdf'
+      },
+      echoes: {
+        name: 'Echoes of Campus',
+        label: 'Student Media Platform',
+        swatches: ['#0B1E38', '#8A939C', '#4A5568', '#6B7280'],
+        typo: 'Futura Bold + Inter',
+        story: 'Echoes of Campus is a student media startup built to amplify the voices, opinions, and experiences of Nigerian students. The brand needed to feel authoritative enough to command respect across universities while staying dynamic, youth-driven, and recognizable on Spotify, YouTube, and Instagram. I built the identity around one idea: every voice has a signal, and Echoes of Campus amplifies it.',
+        images: ['assets/projects/echoes-of-campus/echoes-of-campus-mockup-1.png', 'assets/projects/echoes-of-campus/echoes-of-campus-mockup-2.png'],
+        pdf: 'assets/pdf/echoes-of-campus-brand-identity.pdf'
+      },
+      brave: {
+        name: 'Brave Nexus',
+        label: 'Online Portfolio',
+        swatches: [],
+        typo: '',
+        story: 'Brave is a 200-level student operating across three completely different skill sets: social media management, videography, and network cloud engineering. The challenge was building one portfolio that communicates all three without feeling scattered. I built a clean, organized digital portfolio that gives each skill its own space while maintaining one unified personal brand across every section.',
+        images: ['assets/projects/website/brave-nexus/mockup-1.png', 'assets/projects/website/brave-nexus/mockup-2.png'],
+        liveUrl: 'https://olusola-oyeyiola.netlify.app/'
+      },
+      denshi: {
+        name: 'Denshi',
+        label: 'Web3 Design Contest — 1st Place',
+        swatches: [],
+        typo: '',
+        story: '$DENSHI is a Web3 token built on Solana, centered around program-derived addresses and keyless authority. A protocol where control belongs strictly to code. Most submissions relied on static imagery that failed to communicate technical depth or protocol credibility. I delivered a full-motion case study instead. A circuit-inspired D monogram derived from Denshi, Japanese for electronic, built from printed circuit board trace nodes to symbolize pure code execution. The visual system moves from physical locks and matrix terminal code to dynamic 3D kinetic tunnels, speed lines, and live market overlays in deep space navy and electric white. Delivering a high-production video asset out-framed every competitor and secured a first-place win.',
+        images: []
+      },
+      beekeeper: {
+        name: 'Beekeeper',
+        label: 'Web3 Design Contest — 1st Place',
+        swatches: [],
+        typo: '',
+        story: 'In Web3, static visuals get scrolled past. While every other contestant filled the submissions channel with flat images, I saw a gap. Combining brand identity, AI generation, video editing, and narrative architecture, I built an animated brand case study that did not just show a logo mark. It defined the entire ecosystem of $BEEKEEPER. A Web3 token built on decentralized liquidity and community volume, using the hive as a metaphor for collective financial strength. I engineered a precise hexagonal mark signaling security and structural integrity, paired with high-contrast Electric Amber. Turning a static design brief into a full motion case study secured an undisputed first-place win.',
+        images: []
+      }
+    };
+    const modal = document.getElementById('projectModal');
+    const modalBody = document.getElementById('modalBody');
+    document.querySelectorAll('.project-card[data-modal]').forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.dataset.modal;
+        const data = modalData[key];
+        if (!data) return;
+        let visuals = '';
+        if (data.images && data.images.length) {
+          visuals = data.images.map(src => `<img src='${src}' alt='${data.name} mockup' loading='lazy'>`).join('');
+        } else {
+          visuals = `<div class='img-placeholder'>${data.name}</div>`;
+        }
+        let swatches = '';
+        if (data.swatches && data.swatches.length) {
+          swatches = `<div class='swatches'>${data.swatches.map(c => `<div class='swatch' style='background:${c}' title='${c}'></div>`).join('')}</div>`;
+        }
+        let typo = data.typo ? `<div class='typo'>Typography: ${data.typo}</div>` : '';
+        let liveBtn = data.liveUrl ? `<a href='${data.liveUrl}' class='btn btn-primary' target='_blank' rel='noopener' style='margin-top:12px; display:inline-block;'>View Live Website &rarr;</a>` : '';
+        let pdfBtn = data.pdf ? `<a href='${data.pdf}' class='btn btn-ghost' target='_blank' rel='noopener' style='margin-top:12px; display:inline-block; margin-left:8px;'>View Full Identity &rarr;</a>` : '';
+        modalBody.innerHTML = `<div class='modal-visuals'>${visuals}</div><div class='modal-story'><h2>${data.name}</h2><span class='label'>${data.label}</span>${swatches}${typo}<p>${data.story}</p>${liveBtn}${pdfBtn}<br><a href='work.html' class='btn btn-ghost' style='margin-top:12px'>Back to Portfolio</a></div>`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.querySelector('.modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+
+</html>

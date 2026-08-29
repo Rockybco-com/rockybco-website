@@ -1,0 +1,91 @@
+/* ============================================ */
+/* ROCKYBCO — ABOUT STYLES                       */
+/* ============================================ */
+
+/* Hero — teal background */
+.about-hero {
+  background: var(--teal);
+  padding-top: 140px;
+  padding-bottom: 60px;
+}
+.about-hero .section-headline {
+  max-width: 700px;
+  color: var(--cream);
+}
+
+/* Bio — teal background, cream text */
+.about-bio { background: var(--teal); padding-top: 0; }
+.about-bio .bio-inner {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 900px) { .about-bio .bio-inner { grid-template-columns: 1fr; } }
+.about-bio .bio-text {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--cream);
+  opacity: 0.9;
+}
+.about-bio .bio-text p { margin-bottom: 20px; }
+.about-bio .bio-photo img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+/* ============================================ */
+/* SKILLS — Cream background, Teal text          */
+/* ============================================ */
+.skills-section {
+  background: var(--cream);
+}
+.skills-section .section-label {
+  color: var(--teal-dim);
+}
+.skills-section .section-headline {
+  color: var(--teal);
+}
+
+.skills-list { display: flex; flex-direction: column; gap: 28px; }
+
+.skill-bar {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+@media (max-width: 600px) { .skill-bar { grid-template-columns: 1fr; gap: 8px; } }
+
+.skill-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--teal);
+}
+
+.skill-track {
+  height: 8px;
+  background: rgba(1, 62, 55, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: var(--teal);
+  width: 0%;
+  transition: width 1.2s ease-out;
+  border-radius: 4px;
+}
+
+.skill-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 12px;
+  border: 1px solid var(--teal-border);
+  border-radius: 20px;
+  color: var(--teal-dim);
+  white-space: nowrap;
+}

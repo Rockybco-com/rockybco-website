@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Portfolio — Rockybco</title>
+  <link href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet'>
+  <link rel='stylesheet' href='css/style.css'>
+  <link rel='stylesheet' href='css/portfolio.css'>
+</head>
+
+<body>
+  <header class='site-header'>
+    <div class='container nav-inner'><a href='index.html' class='logo-link'><span class='logo-fallback'>ROCKYBCO</span></a>
+      <nav class='nav-links'><a href='index.html' class='nav-link'>Home</a><a href='work.html' class='nav-link active'>Portfolio</a><a href='about.html' class='nav-link'>About</a><a href='brief.html' class='nav-link'>Contact</a><a href='brief.html' class='nav-cta'>Start a Project</a></nav><button class='hamburger' aria-label='Menu'><span></span><span></span><span></span></button>
+    </div>
+    <div class='mobile-nav'><a href='index.html'>Home</a><a href='work.html'>Portfolio</a><a href='about.html'>About</a><a href='brief.html'>Contact</a><a href='brief.html' class='nav-cta'>Start a Project</a></div>
+  </header>
+  <main class='portfolio-page'>
+    <section class='section' style='padding-top:120px;'>
+      <div class='container'><span class='section-label reveal on-cream'>Selected Work</span>
+        <h1 class='section-headline reveal on-cream'>Past works</h1>
+        <div class='filter-bar reveal'><button class='filter-btn active' data-filter='all'>All</button><button class='filter-btn' data-filter='brand-identity'>Brand Identity</button><button class='filter-btn' data-filter='logo-concepts'>Logo Concepts</button><button class='filter-btn' data-filter='website'>Websites</button><button class='filter-btn' data-filter='web3'>Web3 / Video</button></div>
+        <div class='portfolio-grid stagger-children' id='portfolioGrid'><!-- BRAND IDENTITY PROJECTS -->
+          <div class='portfolio-card' data-category='brand-identity'>
+            <div class='card-thumb'><img src='assets/projects/noor-collection/noor-thumbnail.png' alt='Noor Collections' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Brand Identity</span>
+              <h3 class='card-name'>Noor Collections</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='brand-identity'>
+            <div class='card-thumb'><img src='assets/projects/ceeravo/ceeravo-thumbnail.png' alt='Ceeravo' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Brand Identity</span>
+              <h3 class='card-name'>Ceeravo</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='brand-identity'>
+            <div class='card-thumb'><img src='assets/projects/totetales/totetales-thumbnail.png' alt='Totetales by Thiffeh' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Brand Identity</span>
+              <h3 class='card-name'>Totetales by Thiffeh</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='brand-identity'>
+            <div class='card-thumb'><img src='assets/projects/echoes-of-campus/echoes-of-campus-thumbnail.png' alt='Echoes of Campus' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Brand Identity</span>
+              <h3 class='card-name'>Echoes of Campus</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='brand-identity'>
+            <div class='card-thumb'><img src='assets/projects/go-move/go-move-thumbnail.png' alt='Go Move' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Brand Identity</span>
+              <h3 class='card-name'>Go Move</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='brand-identity'>
+            <div class='card-thumb'><img src='assets/projects/vogues-by-dehem/vogues-by-dehem-thumbnail.png' alt='Vogues by Dehem' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Brand Identity</span>
+              <h3 class='card-name'>Vogues by Dehem</h3>
+            </div>
+          </div><!-- LOGO CONCEPTS -->
+          <div class='portfolio-card' data-category='logo-concepts'>
+            <div class='card-thumb'><img src='assets/projects/logo-concepts/acceleration/acceleration-thumbnail.jpeg' alt='Acceleration' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Logo Concept</span>
+              <h3 class='card-name'>Acceleration</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='logo-concepts'>
+            <div class='card-thumb'><img src='assets/projects/logo-concepts/zuribites/zuribites-thumbnail.png' alt='Zuribites' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Logo Concept</span>
+              <h3 class='card-name'>Zuribites</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='logo-concepts'>
+            <div class='card-thumb'><img src='assets/projects/logo-concepts/aisha-hijab-haven/aisha-hijab-haven-thumbnail.png' alt='Aisha Hijab Haven' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Logo Concept</span>
+              <h3 class='card-name'>Aisha Hijab Haven</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='logo-concepts'>
+            <div class='card-thumb'><img src='assets/projects/logo-concepts/oytto-culture/oytto-culture-thumbnail.png' alt='OyttO Culture' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Logo Concept</span>
+              <h3 class='card-name'>OyttO Culture</h3>
+            </div>
+          </div><!-- WEBSITES -->
+          <div class='portfolio-card' data-category='website'>
+            <div class='card-thumb'><img src='assets/projects/website/vogues-by-dehem/thumbnail.png' alt='Vogues by Dehem Website' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Website</span>
+              <h3 class='card-name'>Vogues by Dehem Website</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='website'>
+            <div class='card-thumb'><img src='assets/projects/website/ayokunmi/thumbnail.png' alt='Ayokunmi' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Website</span>
+              <h3 class='card-name'>Ayokunmi</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='website'>
+            <div class='card-thumb'><img src='assets/projects/website/brave-nexus/thumbnail.png' alt='Brave Nexus' width='400' height='250' loading='lazy'></div>
+            <div class='card-meta'><span class='card-tag'>Website</span>
+              <h3 class='card-name'>Brave Nexus</h3>
+            </div>
+          </div><!-- WEB3 / VIDEO -->
+          <div class='portfolio-card' data-category='web3'>
+            <div class='card-thumb video-thumb'><video src='assets/web3/beekeeper.mp4' muted playsinline preload='metadata' poster='assets/web3/beekeeper-poster.png' onerror="this.poster='assets/web3/beekeeper-poster.png'"></video><span class='play-icon'>&#9654;</span></div>
+            <div class='card-meta'><span class='card-tag'>Web3 / Video</span>
+              <h3 class='card-name'>Beekeeper</h3>
+            </div>
+          </div>
+          <div class='portfolio-card' data-category='web3'>
+            <div class='card-thumb video-thumb'><video src='assets/web3/denshi.mp4' muted playsinline preload='metadata' poster='assets/web3/denshi-poster.jpeg' onerror="this.poster='assets/web3/denshi-poster.jpeg'"></video><span class='play-icon'>&#9654;</span></div>
+            <div class='card-meta'><span class='card-tag'>Web3 / Video</span>
+              <h3 class='card-name'>Denshi</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- CASE STUDY MODAL -->
+  <div class='modal-overlay' id='caseModal'>
+    <div class='modal-content case-modal'><button class='modal-close' aria-label='Close modal'>&times;</button>
+      <div class='modal-body' id='caseBody'></div>
+    </div>
+  </div><!-- VIDEO LIGHTBOX (MOVED BEFORE FOOTER) -->
+  <div class='modal-overlay' id='videoModal'>
+    <div class='video-container'><button class='modal-close' aria-label='Close video'>&times;</button><span class='badge' id='videoBadge'></span><video id='lightboxVideo' controls playsinline></video>
+      <div class='video-story' id='videoStory'></div>
+    </div>
+  </div>
+  <footer class='site-footer'>
+    <div class='container footer-inner'>
+      <div>
+        <div class='footer-brand'>Rockybco</div>
+        <div class='footer-tagline'>Precision. Identity. Signal.</div><a href='assets/pdf/rockybco-portfolio-cv.pdf' class='btn btn-ghost' download target='_blank' rel='noopener'>Download My Portfolio &amp; CV</a>
+      </div>
+      <div class='footer-contact'><a href='mailto:Rockyb.systems@gmail.com' aria-label='Email'><span class='icon icon-email'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg></span></a><a href='https://wa.me/2348156876258' target='_blank' rel='noopener' aria-label="WhatsApp"><span class='icon icon-whatsapp'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.487 1.333 5.004L2 22l5.133-1.347a9.923 9.923 0 004.877 1.28h.005c5.507 0 9.99-4.478 9.99-9.985 0-2.667-1.039-5.176-2.926-7.062A9.926 9.926 0 0012.012 2zm5.827 14.167c-.247.695-1.226 1.272-1.996 1.439-.53.114-1.222.204-3.553-.761-2.981-1.234-4.901-4.264-5.05-4.462-.147-.198-1.206-1.607-1.206-3.065 0-1.459.761-2.176 1.03-2.47.27-.295.589-.368.785-.368.196 0 .393.002.564.01.182.008.428-.069.67.511.247.592.836 2.04.91 2.188.074.148.123.321.025.518-.098.197-.148.321-.295.494-.148.173-.31.387-.442.52-.148.148-.302.309-.13.605.173.296.767 1.267 1.65 2.054 1.135 1.011 2.091 1.325 2.387 1.472.296.148.468.124.64-.074.173-.198.739-.863.935-1.16.197-.296.394-.247.665-.148.271.099 1.722.813 2.017.961.295.148.492.222.565.345.074.123.074.717-.173 1.412z" />
+            </svg></span></a><a href='https://linkedin.com/in/iamrockyb' target='_blank' rel='noopener' aria-label="LinkedIn"><span class='icon icon-linkedin'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.64a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z" />
+            </svg></span></a></div>
+    </div>
+    <div class='container footer-bottom'>&copy; 2026 Rockybco. All rights reserved.</div>
+  </footer>
+  <script src='js/nav.js'></script>
+  <script src='js/portfolio.js'></script>
+</body>
+
+</html>
