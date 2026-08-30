@@ -81,7 +81,6 @@ function validateStep(step) {
 
   if (step === 3) {
     valid = requireRadioGroup('brand-vibe', 'Please select a vibe.') && valid;
-    valid = requireRadioGroup('color-direction', 'Please select a color direction.') && valid;
   }
 
   if (step === 4) {
