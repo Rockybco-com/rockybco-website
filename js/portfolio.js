@@ -19,15 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   /* ===== CASE STUDY DATA ===== */
   const caseData = {
-    'Noor Collections': {
-      category: 'brand-identity',
-      label: 'Brand Identity — Wear Your Confidence',
-      swatches: ['#C9A227', '#F5F0E8', '#FAF8F5'],
-      typo: 'Cormorant Garamond + Lato',
-      story: 'Noor Collections is a Nigerian modest-fashion brand targeting young Muslim women who want premium, colorful, and elegant accessories. The challenge was an identity that felt sophisticated while staying warm, feminine, and culturally grounded. I developed a refined visual direction using gold and soft ivory, paired with Cormorant Garamond for elegance and Lato for clean supporting type. The custom NC monogram gives the brand a distinctive signature with an ornamental feel tied to modest fashion. The result is a clean, luxurious identity that positions Noor Collections as established and premium without becoming overcomplicated.',
-      images: ['assets/projects/noor-collection/noor-mockup-1.png', 'assets/projects/noor-collection/noor-mockup-2.png'],
-      logo: 'assets/projects/noor-collection/noor-logo.png'
-    },
     'Ceeravo': {
       category: 'brand-identity',
       label: 'Smart Medical Routing Platform',
@@ -37,15 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
       images: ['assets/projects/ceeravo/ceeravo-mockup-1.png', 'assets/projects/ceeravo/ceeravo-mockup-2.png'],
       logo: 'assets/projects/ceeravo/ceeravo-logo.png',
       pdf: 'assets/pdf/ceeravo-brand-identity.pdf'
-    },
-    'Totetales by Thiffeh': {
-      category: 'brand-identity',
-      label: 'Nigerian Tote Bag Brand',
-      swatches: ['#000000', '#FFFFFF', '#0A1F44'],
-      typo: 'Custom wordmark',
-      story: 'Totetales by Thiffeh is a Nigerian tote bag brand for students and office workers who need practical, stylish bags every day. The challenge was an identity that felt young, functional, and memorable while standing out in a competitive market. I built the identity around the product itself. A subtle tote-bag handle is integrated directly into the Totetales wordmark, paired with bold condensed typography and a clean black, white, and deep blue palette. The brand communicates exactly what it sells without relying on a complicated icon. Clean, versatile, easy to recognize across every surface.',
-      images: ['assets/projects/totetales/totetales-mockup-1.png', 'assets/projects/totetales/totetales-mockup-2.png'],
-      logo: 'assets/projects/totetales/totetales-logo.png'
     },
     'Echoes of Campus': {
       category: 'brand-identity',
@@ -65,25 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
       story: 'Go Move Logistics is an end-to-end transport and delivery brand offering intercity transit, last-mile dispatch, and digital booking services across Nigeria. The job was to rebrand an outdated identity whose visuals looked like flyers scraped off old commercial buses. I designed a sleek, forward-leaning monogram integrating the letter G with a highway track. Forest Green builds grounded trust, while high-energy Gold cuts through visual noise.',
       images: ['assets/projects/go-move/go-move-mockup-1.png', 'assets/projects/go-move/go-move-mockup-2.png'],
       logo: 'assets/projects/go-move/go-move-logo.png'
-    },
-    'Vogues by Dehem': {
-      category: 'brand-identity',
-      label: 'Luxury Footwear and Leatherware',
-      swatches: ['#0A0A0A', '#FFF9E6', '#8B4513', '#C9A227'],
-      typo: 'Editorial serif + Sans',
-      story: 'Vogues by Dehem is a Lagos-based luxury footwear and leatherware brand. I built them a complete, end-to-end brand identity system and designed their web platform to command immediate respect. A sharp, scalable monogram engineered for leather stamping and luxury packaging replaced the old mark.',
-      images: ['assets/projects/vogues-by-dehem/vogues-by-dehem-mockup-1.png', 'assets/projects/vogues-by-dehem/vogues-by-dehem-mockup-2.png'],
-      logo: 'assets/projects/vogues-by-dehem/vogues-by-dehem-logo.png',
-      pdf: 'assets/pdf/vogues-by-dehem-brand-identity.pdf'
-    },
-    'Aisha Hijab Haven': {
-      category: 'logo-concepts',
-      label: 'Logo Design & Brand Identity',
-      swatches: ['#D4AF37', '#FFF9E6', '#2A2A2A'],
-      typo: 'Playfair Display + Manrope',
-      story: 'Brand identity and logo design concept for Aisha Hijab Haven, focusing on modern elegance, modesty, and luxury presentation.',
-      images: ['assets/projects/logo-concepts/aisha-hijab-haven/aisha-hijab-haven-thumbnail.png'],
-      logo: 'assets/projects/logo-concepts/aisha-hijab-haven/aisha-hijab-haven-logo.png'
     },
     'Zuribites': {
       category: 'logo-concepts',
@@ -120,15 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
       story: 'E-commerce platform and digital showcase for Lagos luxury footwear brand Vogues by Dehem.',
       images: ['assets/projects/website/vogues-by-dehem/mockup-1.png', 'assets/projects/website/vogues-by-dehem/mockup-2.png'],
       liveUrl: 'https://funny-pavlova-17aaef.netlify.app'
-    },
-    'Brave Nexus': {
-      category: 'website',
-      label: 'Online Portfolio Platform',
-      swatches: ['#013E37', '#FFEFB3'],
-      typo: 'Manrope + JetBrains Mono',
-      story: 'Brave is a multi-disciplinary student operating across social media management, videography, and network cloud engineering. I built a clean, organized digital portfolio that gives each skill its own space while maintaining one unified personal brand.',
-      images: ['assets/projects/website/brave-nexus/mockup-1.png', 'assets/projects/website/brave-nexus/mockup-2.png'],
-      liveUrl: 'https://olusola-oyeyiola.netlify.app/'
     },
     'Ayokunmi': {
       category: 'website',
