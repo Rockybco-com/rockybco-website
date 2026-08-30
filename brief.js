@@ -218,11 +218,45 @@ btnBack.addEventListener('click', () => {
 });
 
 /* ── SUBMIT ── */
-btnSubmit.addEventListener('click', () => {
+btnSubmit.addEventListener('click', async () => {
   if (!validateStep(6)) return;
   btnSubmit.textContent = 'Sending…';
   btnSubmit.disabled = true;
-  briefForm.submit();
+  try {
+    const formData = new FormData(briefForm);
+    const res = await fetch(briefForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      window.location.href = 'success.html';
+    } else {
+      let msg = 'Submission failed. Please try again.';
+      try { const data = await res.json(); if (data.errors) msg = data.errors.map(e => e.message).join(', '); } catch {}
+      throw new Error(msg);
+    }
+  } catch (err) {
+    btnSubmit.textContent = 'Submit Brief →';
+    btnSubmit.disabled = false;
+    let errEl = document.getElementById('submit-error');
+    if (!errEl) {
+      errEl = document.createElement('p');
+      errEl.id = 'submit-error';
+      errEl.className = 'error-msg';
+      errEl.style.textAlign = 'center';
+      errEl.style.marginTop = '16px';
+      btnSubmit.parentNode.appendChild(errEl);
+    }
+    errEl.textContent = err.message || 'Network error — please check your connection and try again.';
+    errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+// Allow Enter-key / native submit to trigger the same flow
+briefForm.addEventListener('submit', e => {
+  e.preventDefault();
+  btnSubmit.click();
 });
 
 /* ── HELPERS ── */
