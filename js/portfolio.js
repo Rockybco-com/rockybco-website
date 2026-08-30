@@ -122,10 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!data) return;
       let visuals = '';
       if (data.images && data.images.length) {
-        visuals += data.images.map(src => `<img src='${src}' alt='${name} mockup' loading='lazy' onerror='this.style.display="none"'>`).join('');
+        visuals += data.images.map(src => `<img src='${src}' alt='${name} mockup' width='800' height='500' loading='lazy' decoding='async' onerror='this.style.display="none"'>`).join('');
       }
       if (data.logo) {
-        visuals += `<img src='${data.logo}' alt='${name} logo' loading='lazy' onerror='this.style.display="none"'>`;
+        visuals += `<img src='${data.logo}' alt='${name} logo' width='400' height='400' loading='lazy' decoding='async' onerror='this.style.display="none"'>`;
       }
       if (!visuals) visuals = `<div class='img-placeholder'>${name} Visuals</div>`;
       let swatches = '';

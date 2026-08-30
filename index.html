@@ -5,6 +5,8 @@
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Rockybco — Brand Identity & Web Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet'>
   <link rel='stylesheet' href='css/style.css'>
   <style>
@@ -634,7 +636,7 @@
         <p class='hero-sub'>Brand identity and web design for founders building things that matter.</p>
         <div class='hero-btns'><a href='brief.html' class='btn btn-primary'>Start a Project &rarr;</a><a href='brief.html' class='btn btn-ghost'>Get in Touch &rarr;</a></div>
       </div>
-      <div class='hero-photo'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi — Rockyb, Brand Identity Designer' width='400' height='520' loading='eager'></div>
+      <div class='hero-photo'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi — Rockyb, Brand Identity Designer' width='400' height='520' loading='eager' fetchpriority='high' decoding='async'></div>
     </div>
   </section><!-- MARQUEE -->
   <div class='marquee-strip'>
@@ -841,7 +843,7 @@
       <div class='modal-body' id='modalBody'></div>
     </div>
   </div>
-  <script src='js/nav.js'></script>
+  <script src='js/nav.js' defer></script>
   <script>
     /* FAQ Accordion */
     document.querySelectorAll('.faq-question').forEach(btn => {
@@ -903,7 +905,7 @@
         if (!data) return;
         let visuals = '';
         if (data.images && data.images.length) {
-          visuals = data.images.map(src => `<img src='${src}' alt='${data.name} mockup' loading='lazy'>`).join('');
+          visuals = data.images.map(src => `<img src='${src}' alt='${data.name} mockup' width='800' height='500' loading='lazy' decoding='async'>`).join('');
         } else {
           visuals = `<div class='img-placeholder'>${data.name}</div>`;
         }
