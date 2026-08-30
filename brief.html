@@ -54,7 +54,7 @@
       id="brief-form"
       name="rockybco-client-brief"
       method="POST"
-     action="https://formspree.io/f/mvkogego?next=https://rockybco.vercel.app/success.html"
+      action="https://formspree.io/f/mvkogego"
     >
 
       <!-- ═══════════════════════════════ STEP 1 ═══════════════════════════════ -->
@@ -379,17 +379,26 @@
   </div>
 
   <script src="./brief.js"></script>
-    <script src="./brief.js"></script>
 
   <script>
     document.getElementById('brief-form').addEventListener('submit', function(e) {
-      setTimeout(function() {
-        window.location.href = 'success.html';
-      }, 2000);
+      e.preventDefault();
+      
+      // Submit the form via fetch to Formspree
+      fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          // Redirect to success page after form submits
+          window.location.href = 'success.html';
+        }
+      });
     });
   </script>
 
-</body>
-</html>
 </body>
 </html>
