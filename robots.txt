@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rockybco.vercel.app/sitemap.xml
