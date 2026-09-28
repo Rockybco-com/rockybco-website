@@ -16,10 +16,17 @@
 }
 
 .filter-bar {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 4px;
   margin-bottom: 40px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(26px) saturate(1.6);
+  backdrop-filter: blur(26px) saturate(1.6);
+  border: 1px solid rgba(1, 62, 55, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 30px rgba(1, 62, 55, 0.1);
 }
 
 .filter-btn {
@@ -28,24 +35,25 @@
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 10px 20px;
-  border: 1px solid var(--teal-border);
-  border-radius: var(--radius);
+  padding: 10px 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   background: transparent;
-  color: var(--teal);
+  color: var(--teal-dim);
   transition: all var(--transition);
   cursor: pointer;
 }
 
 .filter-btn:hover {
-  border-color: var(--teal-border-active);
+  color: var(--teal);
   background: var(--teal-faint);
 }
 
 .filter-btn.active {
-  background: var(--teal);
-  color: var(--cream);
-  border-color: var(--teal);
+  background: linear-gradient(180deg, #fff6d8 0%, var(--cream) 55%, #f0dfa0 100%);
+  color: var(--teal);
+  border-color: rgba(1, 62, 55, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(1, 62, 55, 0.12), 0 6px 18px rgba(1, 62, 55, 0.18);
 }
 
 /* Grid */
@@ -60,6 +68,18 @@
 .portfolio-card {
   cursor: pointer;
   transition: opacity 0.35s ease, transform 0.35s ease;
+  background: rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(26px) saturate(1.6);
+  backdrop-filter: blur(26px) saturate(1.6);
+  border: 1px solid rgba(1, 62, 55, 0.14);
+  border-radius: var(--radius);
+  padding: 12px 12px 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 10px 30px rgba(1, 62, 55, 0.1);
+}
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 18px 44px rgba(1, 62, 55, 0.18);
+  border-color: rgba(1, 62, 55, 0.28);
 }
 
 .portfolio-card.hidden {
@@ -128,8 +148,9 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(1, 62, 55, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(1, 62, 55, 0.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.6);
+  backdrop-filter: blur(32px) saturate(1.6);
   z-index: 2000;
   display: none;
   align-items: center;
@@ -139,8 +160,10 @@
 .modal-overlay.active { display: flex; }
 
 .modal-content {
-  background: var(--teal);
-  border: 1px solid var(--border);
+  background: rgba(1, 62, 55, 0.68);
+  -webkit-backdrop-filter: blur(34px) saturate(1.7);
+  backdrop-filter: blur(34px) saturate(1.7);
+  border: 1px solid rgba(255, 239, 179, 0.28);
   border-radius: var(--radius);
   max-width: 960px;
   width: 100%;
@@ -148,6 +171,7 @@
   overflow-y: auto;
   position: relative;
   color: var(--cream);
+  box-shadow: inset 0 1px 0 rgba(255, 239, 179, 0.3), 0 24px 64px rgba(0, 0, 0, 0.35);
 }
 
 .modal-close {
