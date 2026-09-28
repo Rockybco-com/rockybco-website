@@ -33,14 +33,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/brief.css" />
+  <style>
+    /* Floating bento dock (same as global nav) */
+    .nav-links {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 1000;
+      display: flex; align-items: center; gap: 8px; padding: 10px 30px; border-radius: 9999px;
+      max-width: calc(100vw - 32px);
+      background: rgba(255, 239, 179, 0.55);
+      -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
+      border: 1px solid rgba(1, 62, 55, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), 0 12px 40px rgba(1, 62, 55, 0.22);
+    }
+    .nav-links .nav-link {
+      font-family: 'Manrope', system-ui, sans-serif; font-size: 14px; font-weight: 600;
+      color: #013E37; text-decoration: none; padding: 12px 34px; border-radius: 9999px;
+      border: 1px solid transparent; white-space: nowrap; transition: all 0.22s ease;
+    }
+    .nav-links .nav-link:hover {
+      color: #013E37;
+      background: linear-gradient(180deg, #fff6d8 0%, #FFEFB3 55%, #f0dfa0 100%);
+      border-color: rgba(1, 62, 55, 0.2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 6px 18px rgba(1, 62, 55, 0.18);
+    }
+    .nav-links .nav-link.active {
+      background: #013E37;
+      color: #FFEFB3;
+      border-color: #013E37;
+      box-shadow: inset 0 1px 0 rgba(255, 239, 179, 0.3), 0 6px 18px rgba(1, 62, 55, 0.3);
+    }
+    @media (max-width: 768px) {
+      .nav-links { bottom: 16px; padding: 8px 18px; }
+      .nav-links .nav-link { padding: 10px 22px; font-size: 13px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="brief-header">
+  <!-- HEADER (hidden: logo lives on homepage only; dock is the nav) -->
+  <header class="brief-header" style="display:none">
     <a href="index.html" class="logo">ROCKYBCO</a>
     <span class="header-tag">Client Brief</span>
   </header>
+  <nav class="nav-links" aria-label="Primary"><a href="index.html" class="nav-link">Home</a><a href="work.html" class="nav-link">Portfolio</a><a href="about.html" class="nav-link">About</a><a href="brief.html" class="nav-link active">Contact</a></nav>
 
   <!-- INTRO SCREEN -->
   <div id="intro-screen" class="screen intro-screen active">

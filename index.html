@@ -70,35 +70,56 @@
   <style>
     /* ===== HOME PAGE STYLES ===== */
     .hero {
-      background: var(--teal);
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255, 239, 179, 0.08), transparent 70%),
+        repeating-linear-gradient(90deg, rgba(255, 239, 179, 0.05) 0 2px, transparent 2px 90px),
+        var(--teal);
       min-height: 100vh;
       display: flex;
-      align-items: flex-end;
-      padding: 140px 0 90px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 0 120px;
       overflow: hidden;
       position: relative;
+      cursor: none;
     }
+    @media (pointer: coarse) { .hero { cursor: auto; } }
 
     .hero-inner {
-      display: grid;
-      grid-template-columns: 58% 42%;
-      gap: 0;
-      align-items: end;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
-    }
-
-    .hero-text {
       position: relative;
       z-index: 2;
-      margin-right: -80px;
-      padding-bottom: 80px;
     }
 
-    @media (max-width: 900px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
+    .hero-cursor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 56px;
+      height: 56px;
+      margin: -28px 0 0 -28px;
+      border: 1px solid var(--cream-dim);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 20px;
+      color: var(--cream);
+      background: rgba(255, 239, 179, 0.06);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
+    .hero:hover .hero-cursor { opacity: 1; }
+    @media (pointer: coarse) { .hero-cursor { display: none; } }
 
     .hero-label {
       font-family: var(--font-mono);
@@ -114,76 +135,51 @@
     }
 
     .hero-headline {
-      font-family: var(--font-head);
-      font-size: clamp(56px, 7vw, 110px);
-      font-weight: 700;
-      line-height: 0.95;
+      font-size: clamp(52px, 8vw, 120px);
+      font-weight: 500;
+      line-height: 1.02;
       letter-spacing: -0.02em;
       color: var(--cream);
-      margin-bottom: 20px;
+      margin-bottom: 32px;
       opacity: 0;
-      transform: translateX(-40px);
-      animation: fadeLeft 0.7s ease-out 0.15s forwards;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease-out 0.15s forwards;
+      max-width: 1000px;
     }
+    .hero-headline .hl-sans { font-family: var(--font-body); font-weight: 500; }
+    .hero-headline .hl-serif { font-family: var(--font-head); font-style: italic; font-weight: 600; }
 
-    @keyframes fadeLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .hero-sub {
-      font-family: var(--font-body);
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--cream);
-      opacity: 0;
-      margin-bottom: 36px;
-      max-width: 440px;
-      transform: translateX(-40px);
-      animation: fadeLeft 0.6s ease-out 0.3s forwards;
-    }
-
-    .hero-btns {
+    .hero-side-cta {
       display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateX(-40px);
-      animation: fadeLeft 0.6s ease-out 0.45s forwards;
-    }
-
-    .hero-photo {
-      display: flex;
-      justify-content: flex-end;
+      flex-direction: column;
       align-items: flex-end;
+      gap: 16px;
       opacity: 0;
-      transform: translateX(110px) scale(0.96);
-      transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-      perspective: 1000px;
-      position: relative;
-      z-index: 1;
-      will-change: transform, opacity;
+      transform: translateY(24px);
+      animation: fadeUp 0.7s ease-out 0.45s forwards;
     }
 
-    .hero-photo.in-view {
-      opacity: 1;
-      transform: translateX(0) scale(1);
+    .hero-subs {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      width: 100%;
+      max-width: 900px;
+      margin-top: -8px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease-out 0.6s forwards;
     }
-
-    .hero-photo img {
-      max-height: 660px;
-      width: auto;
-      object-fit: contain;
-      transform-style: preserve-3d;
-      transition: transform 0.4s ease;
-      filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.35));
+    .hero-subs p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--cream);
+      opacity: 0.75;
+      max-width: 260px;
     }
-
-    .hero-photo:hover img {
-      transform: perspective(1000px) rotateY(-6deg) rotateX(2deg) scale(1.02);
-    }
+    .hero-subs p:first-child { text-align: left; }
+    .hero-subs p:last-child { text-align: right; }
 
     /* Glass nav on home — teal/cream only */
     .site-header {
@@ -192,17 +188,18 @@
       -webkit-backdrop-filter: blur(26px) saturate(1.6);
       border-bottom: 1px solid var(--border);
     }
+    .site-header .nav-inner { justify-content: center; }
+    .site-header .nav-inner .nav-cta { position: absolute; right: 24px; }
 
     @media (max-width: 900px) {
       .hero { padding: 120px 0 90px; }
-      .hero-text { margin-right: 0; padding-bottom: 40px; }
-      .hero-photo { justify-content: center; }
-      .hero-photo img { max-height: 480px; }
+      .hero-subs { flex-direction: column; align-items: center; gap: 12px; }
+      .hero-subs p:first-child, .hero-subs p:last-child { text-align: center; }
+      .hero-side-cta { align-items: center; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .hero-photo img { transition: none; }
-      .hero-photo:hover img { transform: none; }
+      .hero-cursor { display: none; }
     }
 
     @keyframes fadeUp {
@@ -220,6 +217,36 @@
     }
 
 
+
+    /* Stats band */
+    .stats {
+      background: var(--teal);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0;
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    @media (max-width: 768px) { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
+    .stat { display: flex; flex-direction: column; gap: 6px; }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cream-dim);
+    }
 
     /* Bio (Pale Cream Background) */
     .bio-section {
@@ -302,6 +329,7 @@
     }
 
     .project-card .thumb {
+      position: relative;
       width: 100%;
       aspect-ratio: 16/10;
       background: var(--teal-light);
@@ -319,6 +347,23 @@
 
     .project-card .thumb.video-thumb {
       position: relative;
+    }
+
+    .card-num {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 3;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      background: rgba(1, 62, 55, 0.6);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
     }
 
     .project-card h3 {
@@ -359,6 +404,60 @@
       .service-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Giant accordion service rows */
+    .service-rows { border-top: 1px solid var(--teal-border); }
+    .service-row { border-bottom: 1px solid var(--teal-border); }
+    .service-row summary {
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      padding: 32px 8px;
+      cursor: pointer;
+      list-style: none;
+      transition: background var(--transition), padding var(--transition);
+    }
+    .service-row summary::-webkit-details-marker { display: none; }
+    .service-row summary:hover { background: rgba(1, 62, 55, 0.05); }
+    .row-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--teal-dim);
+    }
+    .row-name {
+      font-family: var(--font-head);
+      font-size: clamp(40px, 6vw, 84px);
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      flex: 1;
+      transition: transform var(--transition);
+    }
+    .service-row summary:hover .row-name { transform: translateX(12px); }
+    .row-tier {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal-dim);
+    }
+    .row-plus {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      color: var(--teal);
+      transition: transform 0.3s ease;
+    }
+    .service-row[open] .row-plus { transform: rotate(45deg); }
+    .row-body { padding: 0 8px 40px 64px; max-width: 760px; }
+    .row-body .intro { font-size: 15px; opacity: 0.85; margin-bottom: 20px; }
+    .row-body ul { margin-bottom: 24px; }
+    .row-body ul li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--teal-border); opacity: 0.85; }
+    .row-body .ideal { font-size: 13px; font-style: italic; opacity: 0.7; margin: 16px 0; }
+    .row-body .timeline { font-family: var(--font-mono); font-size: 12px; color: var(--teal-dim); margin-bottom: 20px; }
+    @media (max-width: 768px) {
+      .row-body { padding: 0 8px 32px; }
+      .row-tier { display: none; }
     }
 
     .service-card {
@@ -478,6 +577,42 @@
       font-family: var(--font-mono);
       font-size: 12px;
       color: var(--cream-dim);
+    }
+
+    /* Client wall */
+    .client-wall { margin-top: 56px; text-align: center; }
+    .wall-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--cream-dim);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .wall-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    .wall-chips span {
+      font-family: var(--font-head);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--cream);
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 239, 179, 0.06);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      transition: all var(--transition);
+    }
+    .wall-chips span:hover {
+      background: var(--cream);
+      color: var(--teal);
+      transform: translateY(-2px);
     }
 
     /* FAQ (Pale Cream) */
@@ -722,16 +857,27 @@
     </div>
     <div class='mobile-nav'><a href='index.html'>Home</a><a href='work.html'>Portfolio</a><a href='about.html'>About</a><a href='brief.html'>Contact</a><a href='brief.html' class='nav-cta'>Start a Project</a></div>
   </header>
-  <nav class='nav-links' aria-label='Primary'><a href='work.html' class='nav-link'>Portfolio</a><a href='about.html' class='nav-link'>About</a><a href='brief.html' class='nav-link'>Contact</a></nav><!-- HERO -->
+  <nav class='nav-links' aria-label='Primary'><a href='index.html' class='nav-link active'>Home</a><a href='work.html' class='nav-link'>Portfolio</a><a href='about.html' class='nav-link'>About</a><a href='brief.html' class='nav-link'>Contact</a></nav><!-- HERO -->
   <section class='hero'>
     <div class='container hero-inner'>
-      <div class='hero-text'>
-        <div class='hero-label'>Brand Identity &middot; Web Design</div>
-        <h1 class='hero-headline'>Precision.<br>Identity.<br>Signal.</h1>
-        <p class='hero-sub'>Brand identity and web design for founders building things that matter.</p>
-        <div class='hero-btns'><a href='brief.html' class='btn btn-primary'>Start a Project &rarr;</a><a href='brief.html' class='btn btn-ghost'>Get in Touch &rarr;</a></div>
+      <div class='hero-label'>Brand Identity &middot; Web Design</div>
+      <h1 class='hero-headline'><span class='hl-sans'>Precision. Identity.</span><br><span class='hl-serif'>Signal.</span></h1>
+      <div class='hero-subs'>
+        <p>Brand identity designer shaping precision systems and custom-coded websites</p>
+        <div class='hero-side-cta'>
+          <a href='brief.html' class='btn btn-ghost'>Start a Project &rarr;</a>
+          <p>For founders who need it shipped, not workshopped</p>
+        </div>
       </div>
-      <div class='hero-photo' id='heroPhoto'><img src='assets/image/rockyb-cutout.png' alt='Ibraheem Abdulroqeeb Olayemi — Rockyb, Brand Identity Designer' width='400' height='520' loading='eager' fetchpriority='high' decoding='async'></div>
+    </div>
+    <div class='hero-cursor' aria-hidden='true'>+</div>
+  </section><!-- STATS -->
+  <section class='stats'>
+    <div class='container stats-inner reveal'>
+      <div class='stat'><span class='stat-num'>10</span><span class='stat-label'>Selected projects</span></div>
+      <div class='stat'><span class='stat-num'>4</span><span class='stat-label'>Disciplines, one owner</span></div>
+      <div class='stat'><span class='stat-num'>2</span><span class='stat-label'>Web3 contest wins</span></div>
+      <div class='stat'><span class='stat-num'>24h</span><span class='stat-label'>Response time</span></div>
     </div>
   </section><!-- BIO -->
   <section class='bio-section section'>
@@ -749,15 +895,15 @@
       <h2 class='section-headline reveal'>Past Projects</h2>
       <div class='project-grid stagger-children' id='featuredGrid'>
         <div class='project-card' data-modal='ceeravo'>
-          <div class='thumb'><img src='assets/projects/ceeravo/ceeravo-thumbnail.png' alt='Ceeravo brand identity' width='400' height='250' loading='lazy'></div>
+          <div class='thumb'><span class='card-num'>01</span><img src='assets/projects/ceeravo/ceeravo-thumbnail.png' alt='Ceeravo brand identity' width='400' height='250' loading='lazy'></div>
           <h3>Ceeravo</h3><span class='tag'>Brand Identity</span>
         </div>
         <div class='project-card' data-modal='denshi'>
-          <div class='thumb video-thumb'><video src='assets/web3/denshi.mp4' muted playsinline preload='metadata' poster='assets/web3/denshi-poster.jpeg' onerror="this.poster='assets/web3/denshi-poster.jpeg'; this.style.display='block';"></video><span class='play-icon' style='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.5);pointer-events:none;'>&#9654;</span></div>
+          <div class='thumb video-thumb'><span class='card-num'>02</span><video src='assets/web3/denshi.mp4' muted playsinline preload='metadata' poster='assets/web3/denshi-poster.jpeg' onerror="this.poster='assets/web3/denshi-poster.jpeg'; this.style.display='block';"></video><span class='play-icon' style='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.5);pointer-events:none;'>&#9654;</span></div>
           <h3>Denshi</h3><span class='tag'>Video</span>
         </div>
         <div class='project-card' data-modal='beekeeper'>
-          <div class='thumb video-thumb'><video src='assets/web3/beekeeper.mp4' muted playsinline preload='metadata' poster='assets/web3/beekeeper-poster.png' onerror="this.poster='assets/web3/beekeeper-poster.png'; this.style.display='block';"></video><span class='play-icon' style='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.5);pointer-events:none;'>&#9654;</span></div>
+          <div class='thumb video-thumb'><span class='card-num'>03</span><video src='assets/web3/beekeeper.mp4' muted playsinline preload='metadata' poster='assets/web3/beekeeper-poster.png' onerror="this.poster='assets/web3/beekeeper-poster.png'; this.style.display='block';"></video><span class='play-icon' style='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,0.5);pointer-events:none;'>&#9654;</span></div>
           <h3>Beekeeper</h3><span class='tag'>Video</span>
         </div>
       </div>
@@ -767,60 +913,63 @@
   <section class='services section' id='services'>
     <div class='container'><span class='section-label reveal on-cream'>Our Services</span>
       <h2 class='section-headline reveal on-cream'>Three Ways to Work With Us</h2>
-      <div class='service-grid stagger-children'>
-        <div class='service-card'>
-          <div class='tier'>The Foundation</div>
-          <h3>Origin</h3>
-          <p class='intro'>For brands starting from zero. Origin gives you the core visual identity you need to show up with clarity and confidence.</p>
-          <ul>
-            <li>Logo design</li>
-            <li>Logo color variations</li>
-            <li>Typography system</li>
-            <li>Brand usage guidelines (1-page PDF)</li>
-            <li>2 brand mockups</li>
-            <li>2 revision rounds</li>
-            <li>Final files: PNG, PDF</li>
-          </ul>
-          <p class='ideal'>Ideal for: Early-stage startups, solo founders, new businesses</p>
-          <p class='timeline'>Delivery: 7 Working Days</p><a href='brief.html' class='btn btn-ghost'>Inquire About Origin</a>
-        </div>
-        <div class='service-card highlight'>
-          <div class='tier'>The Full System</div>
-          <h3>Cipher</h3>
-          <p class='intro'>For brands ready to go beyond a logo. Cipher delivers a complete brand identity system — every visual touchpoint, built with precision.</p>
-          <ul>
-            <li>Everything in Origin</li>
-            <li>Multiple logo forms (transparent + alternate)</li>
-            <li>Brand pattern and texture design</li>
-            <li>Brand voice and tone guide</li>
-            <li>Business card design</li>
-            <li>Brand book (digital PDF, 8–12 pages)</li>
-            <li>Full color system with usage rules</li>
-            <li>Typography hierarchy documentation</li>
-            <li>3 brand mockups across touchpoints</li>
-            <li>3 revision rounds</li>
-          </ul>
-          <p class='ideal'>Ideal for: Growing brands, rebranding businesses, funded startups</p>
-          <p class='timeline'>Delivery: 10–14 Working Days</p><a href='brief.html' class='btn btn-ghost'>Inquire About Cipher</a>
-        </div>
-        <div class='service-card'>
-          <div class='tier'>Brand Identity + Coded Presence</div>
-          <h3>Apex</h3>
-          <p class='intro'>For brands that need everything — identity and a digital home. Apex pairs a full brand system with a custom-coded website, built clean and deployed live.</p>
-          <ul>
-            <li>Everything in Cipher</li>
-            <li>21+ page comprehensive brand guideline</li>
-            <li>5+ mockups</li>
-            <li>Custom HTML/CSS/JS website (up to 5 pages)</li>
-            <li>Mobile-responsive across all screens</li>
-            <li>Basic SEO setup</li>
-            <li>Netlify deployment included</li>
-            <li>1 month of minor post-launch edits</li>
-            <li>3 revision rounds</li>
-          </ul>
-          <p class='ideal'>Ideal for: Brands launching seriously, Web3 projects, international clients</p>
-          <p class='timeline'>Delivery: 20–21 Working Days</p><a href='brief.html' class='btn btn-ghost'>Inquire About Apex</a>
-        </div>
+      <div class='service-rows stagger-children'>
+        <details class='service-row' open>
+          <summary><span class='row-num'>01</span><span class='row-name'>Origin</span><span class='row-tier'>The Foundation</span><span class='row-plus'>+</span></summary>
+          <div class='row-body'>
+            <p class='intro'>For brands starting from zero. Origin gives you the core visual identity you need to show up with clarity and confidence.</p>
+            <ul>
+              <li>Logo design</li>
+              <li>Logo color variations</li>
+              <li>Typography system</li>
+              <li>Brand usage guidelines (1-page PDF)</li>
+              <li>2 brand mockups</li>
+              <li>2 revision rounds</li>
+              <li>Final files: PNG, PDF</li>
+            </ul>
+            <p class='ideal'>Ideal for: Early-stage startups, solo founders, new businesses</p>
+            <p class='timeline'>Delivery: 7 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Origin</a>
+          </div>
+        </details>
+        <details class='service-row'>
+          <summary><span class='row-num'>02</span><span class='row-name'>Cipher</span><span class='row-tier'>The Full System</span><span class='row-plus'>+</span></summary>
+          <div class='row-body'>
+            <p class='intro'>For brands ready to go beyond a logo. Cipher delivers a complete brand identity system — every visual touchpoint, built with precision.</p>
+            <ul>
+              <li>Everything in Origin</li>
+              <li>Multiple logo forms (transparent + alternate)</li>
+              <li>Brand pattern and texture design</li>
+              <li>Brand voice and tone guide</li>
+              <li>Business card design</li>
+              <li>Brand book (digital PDF, 8–12 pages)</li>
+              <li>Full color system with usage rules</li>
+              <li>Typography hierarchy documentation</li>
+              <li>3 brand mockups across touchpoints</li>
+              <li>3 revision rounds</li>
+            </ul>
+            <p class='ideal'>Ideal for: Growing brands, rebranding businesses, funded startups</p>
+            <p class='timeline'>Delivery: 10–14 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Cipher</a>
+          </div>
+        </details>
+        <details class='service-row'>
+          <summary><span class='row-num'>03</span><span class='row-name'>Apex</span><span class='row-tier'>Brand Identity + Coded Presence</span><span class='row-plus'>+</span></summary>
+          <div class='row-body'>
+            <p class='intro'>For brands that need everything — identity and a digital home. Apex pairs a full brand system with a custom-coded website, built clean and deployed live.</p>
+            <ul>
+              <li>Everything in Cipher</li>
+              <li>21+ page comprehensive brand guideline</li>
+              <li>5+ mockups</li>
+              <li>Custom HTML/CSS/JS website (up to 5 pages)</li>
+              <li>Mobile-responsive across all screens</li>
+              <li>Basic SEO setup</li>
+              <li>Netlify deployment included</li>
+              <li>1 month of minor post-launch edits</li>
+              <li>3 revision rounds</li>
+            </ul>
+            <p class='ideal'>Ideal for: Brands launching seriously, Web3 projects, international clients</p>
+            <p class='timeline'>Delivery: 20–21 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Apex</a>
+          </div>
+        </details>
       </div>
       <p class='service-note'>All packages are priced based on project scope. Get in touch to discuss your brand.</p>
     </div>
@@ -848,6 +997,12 @@
         <div class='testimonial-card'>
           <p>I have worked with Rockyb on multiple projects, and he is genuinely one of the best brand identity designners I have come across. He combines branding, visual identity, creative direction, and vibe coding to create clean, polished websites and digital experiences that feel unique to each brand. I highly recommend him. </p>
           <div class='attr'>— Ayokunmi, SEO Copywriter and AI Content Strategist</div>
+        </div>
+      </div>
+      <div class='client-wall reveal'>
+        <span class='wall-label'>Trusted by teams &amp; founders</span>
+        <div class='wall-chips'>
+          <span>Ceeravo</span><span>Echoes of Campus</span><span>Go Move</span><span>Vogues by Dehem</span><span>Ayokunmi</span><span>Brave Nexus</span><span>Zuribites</span><span>Acceleration</span><span>OyttO Culture</span>
         </div>
       </div>
     </div>
@@ -1026,46 +1181,17 @@
       document.body.style.overflow = '';
     }
 
-    /* Hero 3D tilt + scroll-up entrance + parallax — respects reduced motion */
+    /* Hero cursor dot — follows mouse, desktop fine pointers only */
     (function () {
-      const photo = document.getElementById('heroPhoto');
-      if (!photo) return;
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        photo.classList.add('in-view');
-        return;
-      }
-      const img = photo.querySelector('img');
-      const hero = photo.closest('.hero');
-      // Replay entrance each time hero scrolls into view (scroll up brings image back)
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) photo.classList.add('in-view');
-          else photo.classList.remove('in-view');
-        });
-      }, { threshold: 0.2 });
-      io.observe(hero);
-      // Gentle parallax while hero is visible
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const r = hero.getBoundingClientRect();
-          if (r.bottom > 0 && r.top < window.innerHeight) {
-            const p = Math.min(Math.max(-r.top / r.height, 0), 1);
-            photo.style.translate = `0 ${p * 40}px`;
-          }
-          ticking = false;
-        });
-      }, { passive: true });
-      // Mousemove 3D tilt
+      const hero = document.querySelector('.hero');
+      const dot = document.querySelector('.hero-cursor');
+      if (!hero || !dot) return;
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       hero.addEventListener('mousemove', e => {
         const r = hero.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        img.style.transform = `perspective(1000px) rotateY(${x * -8}deg) rotateX(${y * 4}deg) scale(1.02)`;
+        dot.style.transform = `translate(${e.clientX - r.left}px, ${e.clientY - r.top}px)`;
       });
-      hero.addEventListener('mouseleave', () => { img.style.transform = ''; });
     })();
   </script>
 </body>
