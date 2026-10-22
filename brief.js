@@ -248,8 +248,7 @@ btnSubmit.addEventListener('click', async () => {
       errEl.style.marginTop = '16px';
       btnSubmit.parentNode.appendChild(errEl);
     }
-    errEl.textContent = (err.message || 'Network error — please check your connection and try again.') +
-      ' If this keeps happening, send your brief directly on WhatsApp (wa.me/2348156876258) or to Rockyb.systems@gmail.com.';
+    errEl.textContent = err.message || 'Submission failed. Please check your connection and try again.';
     errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 });
