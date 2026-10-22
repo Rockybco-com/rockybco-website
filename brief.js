@@ -248,7 +248,8 @@ btnSubmit.addEventListener('click', async () => {
       errEl.style.marginTop = '16px';
       btnSubmit.parentNode.appendChild(errEl);
     }
-    errEl.textContent = err.message || 'Network error — please check your connection and try again.';
+    errEl.textContent = (err.message || 'Network error — please check your connection and try again.') +
+      ' If this keeps happening, send your brief directly on WhatsApp (wa.me/2348156876258) or to Rockyb.systems@gmail.com.';
     errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 });
@@ -267,41 +268,6 @@ function scrollTop() {
 function scrollToFirstError() {
   const first = document.querySelector('.error, .error-msg');
   if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-/* ── FILE UPLOAD ── */
-const uploadZone = document.getElementById('upload-zone');
-const fileInput  = document.getElementById('references');
-const fileList   = document.getElementById('file-list');
-
-if (fileInput) {
-  fileInput.addEventListener('change', () => displayFiles(fileInput.files));
-}
-
-if (uploadZone) {
-  uploadZone.addEventListener('dragover', e => {
-    e.preventDefault();
-    uploadZone.classList.add('dragging');
-  });
-  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragging'));
-  uploadZone.addEventListener('drop', e => {
-    e.preventDefault();
-    uploadZone.classList.remove('dragging');
-    if (e.dataTransfer.files.length) {
-      fileInput.files = e.dataTransfer.files;
-      displayFiles(e.dataTransfer.files);
-    }
-  });
-}
-
-function displayFiles(files) {
-  fileList.innerHTML = '';
-  Array.from(files).forEach(file => {
-    const entry = document.createElement('div');
-    entry.className = 'file-entry';
-    entry.textContent = `${file.name} (${(file.size / 1024).toFixed(0)} KB)`;
-    fileList.appendChild(entry);
-  });
 }
 
 /* ── BUILD SUMMARY (Step 6) ── */
