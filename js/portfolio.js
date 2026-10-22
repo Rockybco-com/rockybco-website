@@ -98,13 +98,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'Beekeeper': {
       category: 'web3',
       video: 'assets/web3/beekeeper.mp4',
-      badge: '1st Place — Web3 Design Contest',
+      badge: 'Web3 Design Competition Entry',
       story: 'In Web3, static visuals get scrolled past. While every other contestant filled the submissions channel with flat images, I saw a gap. Combining brand identity, AI generation, video editing, and narrative architecture, I built an animated brand case study that did not just show a logo mark. It defined the entire ecosystem of $BEEKEEPER. A Web3 token built on decentralized liquidity and community volume, using the hive as a metaphor for collective financial strength.'
     },
     'Denshi': {
       category: 'web3',
       video: 'assets/web3/denshi.mp4',
-      badge: '1st Place — Web3 Design Contest',
+      badge: 'Web3 Design Competition Entry',
       story: '$DENSHI is a Web3 token built on Solana, centered around program-derived addresses and keyless authority. Most submissions relied on static imagery that failed to communicate technical depth. I delivered a full-motion case study instead, built from printed circuit board trace nodes to symbolize pure code execution.'
     }
   };

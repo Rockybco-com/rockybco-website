@@ -42,7 +42,7 @@
     "@graph": [
       {
         "@type": "VideoObject",
-        "name": "Denshi — Web3 Design Contest 1st Place | Rockybco",
+        "name": "Denshi — Web3 Design Competition Entry | Rockybco",
         "description": "$DENSHI Web3 token on Solana — program-derived addresses, circuit-inspired D monogram. Featured on Rockybco homepage.",
         "thumbnailUrl": "https://rockybco.vercel.app/assets/web3/denshi-poster.jpeg",
         "contentUrl": "https://rockybco.vercel.app/assets/web3/denshi.mp4",
@@ -52,7 +52,7 @@
       },
       {
         "@type": "VideoObject",
-        "name": "Beekeeper — Web3 Design Contest 1st Place | Rockybco",
+        "name": "Beekeeper — Web3 Design Competition Entry | Rockybco",
         "description": "$BEEKEEPER Web3 token — hive metaphor, hexagonal mark, animated case study. Featured on Rockybco homepage.",
         "thumbnailUrl": "https://rockybco.vercel.app/assets/web3/beekeeper-poster.png",
         "contentUrl": "https://rockybco.vercel.app/assets/web3/beekeeper.mp4",
@@ -148,6 +148,18 @@
     }
     .hero-headline .hl-sans { font-family: var(--font-body); font-weight: 500; }
     .hero-headline .hl-serif { font-family: var(--font-head); font-style: italic; font-weight: 600; }
+
+    .hero-support {
+      font-family: var(--font-body);
+      font-size: 17px;
+      color: var(--cream);
+      opacity: 0;
+      max-width: 640px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease-out 0.3s forwards;
+    }
 
     .hero-side-cta {
       display: flex;
@@ -579,6 +591,39 @@
       color: var(--cream-dim);
     }
 
+    /* Process */
+    .process { background: var(--teal); padding: 100px 0; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1024px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .process-grid { grid-template-columns: 1fr; } }
+    .process-step {
+      background: rgba(255, 239, 179, 0.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .process-step:hover { transform: translateY(-4px); border-color: var(--border-active); }
+    .step-no {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--cream-dim);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .process-step h3 {
+      font-family: var(--font-head);
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .process-step p { font-size: 14px; line-height: 1.65; opacity: 0.85; }
+
     /* Client wall */
     .client-wall { margin-top: 56px; text-align: center; }
     .wall-label {
@@ -687,7 +732,7 @@
     }
 
     .contact-form-embed {
-      border: 1px dashed var(--border-active);
+      border: none;
       border-radius: var(--radius);
       padding: 48px;
       text-align: center;
@@ -862,10 +907,12 @@
     <div class='container hero-inner'>
       <div class='hero-label'>Brand Identity &middot; Web Design</div>
       <h1 class='hero-headline'><span class='hl-sans'>Precision. Identity.</span><br><span class='hl-serif'>Signal.</span></h1>
+      <p class='hero-support'>Strategic brand identity and custom website experiences for founders building ambitious businesses.</p>
       <div class='hero-subs'>
-        <p>Brand identity designer shaping precision systems and custom-coded websites</p>
+        <p>Brand identity designer shaping precision systems and custom-coded websites — strategy first, then execution.</p>
         <div class='hero-side-cta'>
-          <a href='brief.html' class='btn btn-ghost'>Start a Project &rarr;</a>
+          <a href='brief.html' class='btn btn-primary'>Start a Project &rarr;</a>
+          <a href='work.html' class='btn btn-ghost'>View Selected Work &rarr;</a>
           <p>For founders who need it shipped, not workshopped</p>
         </div>
       </div>
@@ -875,17 +922,16 @@
   <section class='stats'>
     <div class='container stats-inner reveal'>
       <div class='stat'><span class='stat-num'>10</span><span class='stat-label'>Selected projects</span></div>
-      <div class='stat'><span class='stat-num'>4</span><span class='stat-label'>Disciplines, one owner</span></div>
-      <div class='stat'><span class='stat-num'>2</span><span class='stat-label'>Web3 contest wins</span></div>
-      <div class='stat'><span class='stat-num'>24h</span><span class='stat-label'>Response time</span></div>
+      <div class='stat'><span class='stat-num'>1</span><span class='stat-label'>Creative lead, identity to implementation</span></div>
+      <div class='stat'><span class='stat-num'>2</span><span class='stat-label'>Web3 competition entries</span></div>
+      <div class='stat'><span class='stat-num'>24h</span><span class='stat-label'>Inquiry response time</span></div>
     </div>
   </section><!-- BIO -->
   <section class='bio-section section'>
     <div class='container bio-inner reveal'>
       <div class='bio-text'><span class='section-label on-cream'>About</span>
-        <p>I'm a brand identity designer and web developer building systems for founders and Web3 projects that move markets. My work sits at the intersection of precision design and technical execution; every brand I build isn't just beautiful, it's built to scale.</p>
-        <p>Over the last two years, I've designed brand identities and custom-coded websites for brands across Africa, Europe, and North America. From early-stage founders to established Web3 protocols, my process is straightforward: understand your market position, design a system that signals that position, and deliver assets that work across every touchpoint.</p>
-        <p>I am currently collaborating with founders across Lagos, Abuja, and international markets. Let's build something that signals who you are and where you're headed.</p>
+        <p>Rockybco is an independent creative studio focused on brand identity and digital implementation. The work brings visual strategy and practical execution together to help businesses present themselves consistently across the touchpoints that matter.</p>
+        <p><a href='about.html' class='btn btn-teal' style='margin-top:8px; display:inline-block;'>Meet the Person Behind Rockybco &rarr;</a></p>
       </div>
       <div class='bio-photo'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi portrait' width='350' height='450' loading='lazy'></div>
     </div>
@@ -928,7 +974,7 @@
               <li>Final files: PNG, PDF</li>
             </ul>
             <p class='ideal'>Ideal for: Early-stage startups, solo founders, new businesses</p>
-            <p class='timeline'>Delivery: 7 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Origin</a>
+            <p class='timeline'>Delivery: 5–7 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Origin</a>
           </div>
         </details>
         <details class='service-row'>
@@ -967,11 +1013,23 @@
               <li>3 revision rounds</li>
             </ul>
             <p class='ideal'>Ideal for: Brands launching seriously, Web3 projects, international clients</p>
-            <p class='timeline'>Delivery: 20–21 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Apex</a>
+            <p class='timeline'>Delivery: 20–25 Working Days</p><a href='brief.html' class='btn btn-teal'>Inquire About Apex</a>
           </div>
         </details>
       </div>
-      <p class='service-note'>All packages are priced based on project scope. Get in touch to discuss your brand.</p>
+      <p class='service-note'>All packages are priced based on project scope. Work begins once the scope is confirmed, payment is received, and client materials are in — feedback delays may shift delivery dates.</p>
+    </div>
+  </section><!-- PROCESS -->
+  <section class='process section'>
+    <div class='container'><span class='section-label reveal'>How It Works</span>
+      <h2 class='section-headline reveal'>A Structured Process, Not Guesswork</h2>
+      <div class='process-grid stagger-children'>
+        <div class='process-step'><span class='step-no'>01</span><h3>Discovery &amp; Brief</h3><p>Understand the business, audience, objectives, and constraints through the project brief.</p></div>
+        <div class='process-step'><span class='step-no'>02</span><h3>Strategic Direction</h3><p>Establish the visual direction and positioning the identity needs to signal.</p></div>
+        <div class='process-step'><span class='step-no'>03</span><h3>Identity Development</h3><p>Create the logo system, color, typography, and touchpoints within the agreed scope.</p></div>
+        <div class='process-step'><span class='step-no'>04</span><h3>Review &amp; Refinement</h3><p>Walk through feedback together and apply the agreed revision rounds.</p></div>
+        <div class='process-step'><span class='step-no'>05</span><h3>Final Delivery</h3><p>Hand off final files, guidelines, and documentation. Website projects add build, testing, and launch.</p></div>
+      </div>
     </div>
   </section><!-- TESTIMONIALS -->
   <section class='testimonials section'>
@@ -1018,7 +1076,7 @@
         </div>
         <div class='faq-item'><button class='faq-question' aria-expanded='false'>How long does a project take?<span class='faq-icon'>+</span></button>
           <div class='faq-answer'>
-            <p>Origin runs 5 to 7 working days. Cipher takes 10 to 14 working days. Apex, because it includes a full website build, runs 3 to 4 weeks depending on how ready your content is. Timelines are confirmed at the start of every project.</p>
+            <p>Origin runs 5 to 7 working days. Cipher takes 10 to 14 working days. Apex, because it includes a full website build, runs 20 to 25 working days depending on how ready your content is. The clock starts once scope is confirmed, payment is received, and your materials are in — late feedback or missing content may shift the date.</p>
           </div>
         </div>
         <div class='faq-item'><button class='faq-question' aria-expanded='false'>Do you work with international clients?<span class='faq-icon'>+</span></button>
@@ -1036,14 +1094,44 @@
             <p>Depending on the scope, yes. If what you have is worth building on, I will build on it. If it is holding you back, I will tell you that directly.</p>
           </div>
         </div>
-        <div class='faq-item'><button class='faq-question' aria-expanded='false'>Do you offer payment plans?<span class='faq-icon'>+</span></button>
-          <div class='faq-answer'>
-            <p>Payment structure is discussed during the initial conversation. Reach out and we will work out something that fits your project scope.</p>
-          </div>
-        </div>
         <div class='faq-item'><button class='faq-question' aria-expanded='false'>What happens after I submit the brief form?<span class='faq-icon'>+</span></button>
           <div class='faq-answer'>
             <p>You get a response within 24 hours via WhatsApp or email. From there, we confirm scope, timeline, and investment. Then the work begins.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>When does the delivery timeline begin?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>The clock starts once the scope is confirmed, the agreed payment is received, and the client materials needed to begin are available. Delays in feedback or missing materials can shift the delivery date.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>How many revision rounds are included?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Origin includes 2 revision rounds, Cipher includes 3, and Apex includes 3. Revisions cover agreed changes to the work delivered within the package scope. Additional rounds are quoted separately.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What is excluded from each package?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Packages cover the deliverables listed in the package. Excluded by default: paid advertising, social media management, ongoing maintenance, print production, and third-party costs such as domain registration, hosting beyond the included deployment, fonts, or imagery licensing. Anything outside the agreed scope is quoted before work starts.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What website functionality is included in Apex?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Apex includes a custom-coded website of up to 5 pages built in HTML, CSS, and JavaScript, responsive across screen sizes, basic on-page SEO setup, deployment to a Netlify hosting account, and one month of minor post-launch edits. It is a static site: there is no CMS, database, authentication, or payment processing included. Domain registration and annual hosting costs are billed by the provider, not by Rockybco.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>Are additional features available at an extra cost?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Yes. Extra pages, additional design applications beyond the package mockups, or extra revision rounds are quoted based on scope before work begins.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What payment arrangements apply?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>Payment structure is discussed and agreed during the initial conversation, based on the package and scope selected. The agreed amount is confirmed in writing before work begins.</p>
+          </div>
+        </div>
+        <div class='faq-item'><button class='faq-question' aria-expanded='false'>What happens after delivery?<span class='faq-icon'>+</span></button>
+          <div class='faq-answer'>
+            <p>You receive the final files, guidelines, and any implementation outputs covered by the package. Website projects include one month of minor post-launch edits; after that, further changes are quoted as new work.</p>
           </div>
         </div>
       </div>
@@ -1055,7 +1143,7 @@
       <div class='contact-inner reveal'>
         <div class='contact-form-embed'>
           <p>The full project intake form guides you through everything I need to understand your brand, goals, and timeline.</p><a href='brief.html' class='btn btn-primary'>Start a Project</a>
-          <div style='margin-top:20px;'><a href='assets/pdf/rockybco-portfolio-cv.pdf' class='btn btn-ghost' download target='_blank' rel='noopener'>Download My Portfolio &amp; CV &rarr;</a></div>
+          <div style='margin-top:20px;'><a href='https://drive.google.com/drive/folders/REPLACE-WITH-YOUR-FOLDER-ID' class='btn btn-ghost' target='_blank' rel='noopener' data-fallback='assets/pdf/rockybco-portfolio-cv.pdf' onclick="if(this.href.indexOf('REPLACE')>-1){event.preventDefault();window.location.href=this.dataset.fallback;return false;}">View More on Google Drive &rarr;</a></div>
         </div>
         <div class='contact-info'>
           <p>Every serious brand starts with a conversation. Fill the form and I will get back to you within 24 hours.</p>
@@ -1073,7 +1161,7 @@
     <div class='container footer-inner'>
       <div>
         <div class='footer-brand'>Rockybco</div>
-        <div class='footer-tagline'>Precision. Identity. Signal.</div><a href='assets/pdf/rockybco-portfolio-cv.pdf' class='btn btn-ghost' download target='_blank' rel='noopener'>Download My Portfolio &amp; CV</a>
+        <div class='footer-tagline'>Precision. Identity. Signal.</div><a href='https://drive.google.com/drive/folders/REPLACE-WITH-YOUR-FOLDER-ID' class='btn btn-ghost' target='_blank' rel='noopener' data-fallback='assets/pdf/rockybco-portfolio-cv.pdf' onclick="if(this.href.indexOf('REPLACE')>-1){event.preventDefault();window.location.href=this.dataset.fallback;return false;}">View More on Google Drive</a>
       </div>
       <div class='footer-contact'><a href='mailto:Rockyb.systems@gmail.com' aria-label='Email'><span class='icon icon-email'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
@@ -1128,7 +1216,7 @@
       },
       denshi: {
         name: 'Denshi',
-        label: 'Web3 Design Contest — 1st Place',
+        label: 'Web3 Design Competition Entry',
         swatches: [],
         typo: '',
         story: '$DENSHI is a Web3 token built on Solana, centered around program-derived addresses and keyless authority. A protocol where control belongs strictly to code. Most submissions relied on static imagery that failed to communicate technical depth or protocol credibility. I delivered a full-motion case study instead. A circuit-inspired D monogram derived from Denshi, Japanese for electronic, built from printed circuit board trace nodes to symbolize pure code execution. The visual system moves from physical locks and matrix terminal code to dynamic 3D kinetic tunnels, speed lines, and live market overlays in deep space navy and electric white. Delivering a high-production video asset out-framed every competitor and secured a first-place win.',
@@ -1136,7 +1224,7 @@
       },
       beekeeper: {
         name: 'Beekeeper',
-        label: 'Web3 Design Contest — 1st Place',
+        label: 'Web3 Design Competition Entry',
         swatches: [],
         typo: '',
         story: 'In Web3, static visuals get scrolled past. While every other contestant filled the submissions channel with flat images, I saw a gap. Combining brand identity, AI generation, video editing, and narrative architecture, I built an animated brand case study that did not just show a logo mark. It defined the entire ecosystem of $BEEKEEPER. A Web3 token built on decentralized liquidity and community volume, using the hive as a metaphor for collective financial strength. I engineered a precise hexagonal mark signaling security and structural integrity, paired with high-contrast Electric Amber. Turning a static design brief into a full motion case study secured an undisputed first-place win.',
