@@ -26,10 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }); /* Scroll reveal with IntersectionObserver */
   const revealEls = document.querySelectorAll('.reveal, .stagger-children');
+  const pending = new Set(revealEls);
+  const show = (el) => {
+    el.classList.add('visible');
+    pending.delete(el);
+  };
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        show(entry.target);
         revealObserver.unobserve(entry.target);
       }
     });
@@ -38,4 +43,24 @@ document.addEventListener('DOMContentLoaded', () => {
     rootMargin: '0px 0px -40px 0px'
   });
   revealEls.forEach(el => revealObserver.observe(el));
+  /* Safety sweep: IO only fires on intersection crossings, so a fast jump
+     (Page Down, anchor link, restored scroll) can skip small elements
+     entirely. Reveal anything the viewport has reached or passed. */
+  let sweeping = false;
+  const sweep = () => {
+    sweeping = false;
+    const limit = window.innerHeight - 40;
+    pending.forEach(el => {
+      if (el.getBoundingClientRect().top < limit) {
+        revealObserver.unobserve(el);
+        show(el);
+      }
+    });
+  };
+  window.addEventListener('scroll', () => {
+    if (!sweeping) {
+      sweeping = true;
+      requestAnimationFrame(sweep);
+    }
+  }, { passive: true });
 });

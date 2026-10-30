@@ -892,6 +892,69 @@
       color: var(--cream-dim);
       margin: 8px 0;
     }
+
+    /* ===== BELOW-THE-FOLD MOTION ===== */
+
+    /* Client wall chips: soft pop-in cascade */
+    .wall-chips.stagger-children > * {
+      transform: translateY(12px) scale(0.92);
+    }
+    .wall-chips.stagger-children.visible > * {
+      transform: translateY(0) scale(1);
+    }
+    .wall-chips.stagger-children.visible > span:hover {
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    /* Featured cards: media zoom on hover */
+    .project-card .thumb img,
+    .project-card .thumb video {
+      transition: transform 0.5s ease;
+    }
+    .project-card:hover .thumb img,
+    .project-card:hover .thumb video {
+      transform: scale(1.06);
+    }
+
+    /* Video play badge: gentle pulse */
+    @keyframes playPulse {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.18); }
+    }
+    .thumb.video-thumb .play-icon {
+      animation: playPulse 2.4s ease-in-out infinite;
+    }
+
+    /* Service accordion: body slides in when opened */
+    @keyframes rowOpen {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .service-row[open] .row-body {
+      animation: rowOpen 0.4s ease-out;
+    }
+
+    /* Project modal: pop-in */
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-overlay.active .modal-content {
+      animation: modalIn 0.35s ease-out;
+    }
+
+    /* Reduced motion: hero intro + ambient motion off, content shown instantly */
+    @media (prefers-reduced-motion: reduce) {
+      .hero-cursor { display: none; }
+      .hero-label, .hero-headline, .hero-support, .hero-side-cta, .hero-subs {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+      .thumb.video-thumb .play-icon { animation: none; }
+      .service-row[open] .row-body,
+      .modal-overlay.active .modal-content { animation: none; }
+    }
   </style>
 </head>
 
@@ -920,20 +983,20 @@
     <div class='hero-cursor' aria-hidden='true'>+</div>
   </section><!-- STATS -->
   <section class='stats'>
-    <div class='container stats-inner reveal'>
-      <div class='stat'><span class='stat-num'>10</span><span class='stat-label'>Selected projects</span></div>
-      <div class='stat'><span class='stat-num'>1</span><span class='stat-label'>Creative lead, identity to implementation</span></div>
-      <div class='stat'><span class='stat-num'>2</span><span class='stat-label'>Web3 competition entries</span></div>
-      <div class='stat'><span class='stat-num'>24h</span><span class='stat-label'>Inquiry response time</span></div>
+    <div class='container stats-inner reveal stagger-children'>
+      <div class='stat'><span class='stat-num' data-count-to='10'>10</span><span class='stat-label'>Selected projects</span></div>
+      <div class='stat'><span class='stat-num' data-count-to='1'>1</span><span class='stat-label'>Creative lead, identity to implementation</span></div>
+      <div class='stat'><span class='stat-num' data-count-to='2'>2</span><span class='stat-label'>Web3 competition entries</span></div>
+      <div class='stat'><span class='stat-num' data-count-to='24' data-suffix='h'>24h</span><span class='stat-label'>Inquiry response time</span></div>
     </div>
   </section><!-- BIO -->
   <section class='bio-section section'>
-    <div class='container bio-inner reveal'>
-      <div class='bio-text'><span class='section-label on-cream'>About</span>
+    <div class='container bio-inner'>
+      <div class='bio-text reveal from-left'><span class='section-label on-cream'>About</span>
         <p>Rockybco is an independent creative studio focused on brand identity and digital implementation. The work brings visual strategy and practical execution together to help businesses present themselves consistently across the touchpoints that matter.</p>
         <p><a href='about.html' class='btn btn-teal' style='margin-top:8px; display:inline-block;'>Meet the Person Behind Rockybco &rarr;</a></p>
       </div>
-      <div class='bio-photo'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi portrait' width='350' height='450' loading='lazy'></div>
+      <div class='bio-photo reveal from-scale'><img src='assets/image/rockyb.png' alt='Ibraheem Abdulroqeeb Olayemi portrait' width='350' height='450' loading='lazy'></div>
     </div>
   </section><!-- FEATURED PROJECTS -->
   <section class='featured section'>
@@ -1017,7 +1080,7 @@
           </div>
         </details>
       </div>
-      <p class='service-note'>All packages are priced based on project scope. Work begins once the scope is confirmed, payment is received, and client materials are in — feedback delays may shift delivery dates.</p>
+      <p class='service-note reveal'>All packages are priced based on project scope. Work begins once the scope is confirmed, payment is received, and client materials are in — feedback delays may shift delivery dates.</p>
     </div>
   </section><!-- PROCESS -->
   <section class='process section'>
@@ -1059,7 +1122,7 @@
       </div>
       <div class='client-wall reveal'>
         <span class='wall-label'>Trusted by teams &amp; founders</span>
-        <div class='wall-chips'>
+        <div class='wall-chips stagger-children'>
           <span>Ceeravo</span><span>Echoes of Campus</span><span>Go Move</span><span>Vogues by Dehem</span><span>Ayokunmi</span><span>Brave Nexus</span><span>Zuribites</span><span>Acceleration</span><span>OyttO Culture</span>
         </div>
       </div>
@@ -1068,7 +1131,7 @@
   <section class='faq section'>
     <div class='container'><span class='section-label reveal on-cream'>Common Questions</span>
       <h2 class='section-headline reveal on-cream'>Before You Reach Out</h2>
-      <div class='faq-list reveal'>
+      <div class='faq-list stagger-children'>
         <div class='faq-item'><button class='faq-question' aria-expanded='false'>What is the difference between Origin, Cipher, and Apex?<span class='faq-icon'>+</span></button>
           <div class='faq-answer'>
             <p>Origin is for founders who need immediate brand credibility fast. Cipher is the complete brand identity system for businesses that want every visual touchpoint covered properly. Apex adds a custom-coded website on top of everything in Cipher — for teams that want to launch with the full package.</p>
@@ -1140,14 +1203,14 @@
   <section class='contact section' id='contact'>
     <div class='container'><span class='section-label reveal'>Let's Work</span>
       <h2 class='section-headline reveal'>Ready to Build Something?</h2>
-      <div class='contact-inner reveal'>
-        <div class='contact-form-embed'>
+      <div class='contact-inner'>
+        <div class='contact-form-embed reveal from-left'>
           <p>The full project intake form guides you through everything I need to understand your brand, goals, and timeline.</p><a href='brief.html' class='btn btn-primary'>Start a Project</a>
           <div style='margin-top:20px;'><a href='https://drive.google.com/drive/folders/REPLACE-WITH-YOUR-FOLDER-ID' class='btn btn-ghost' target='_blank' rel='noopener' data-fallback='assets/pdf/rockybco-portfolio-cv.pdf' onclick="if(this.href.indexOf('REPLACE')>-1){event.preventDefault();window.location.href=this.dataset.fallback;return false;}">View More on Google Drive &rarr;</a></div>
         </div>
-        <div class='contact-info'>
+        <div class='contact-info reveal from-right'>
           <p>Every serious brand starts with a conversation. Fill the form and I will get back to you within 24 hours.</p>
-          <div class='contact-links'><a href='mailto:Rockyb.systems@gmail.com' aria-label='Email Rockybco'><span class='icon icon-email'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"> <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          <div class='contact-links stagger-children'><a href='mailto:Rockyb.systems@gmail.com' aria-label='Email Rockybco'><span class='icon icon-email'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"> <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                           </svg></span></a><a href='https://wa.me/2348156876258' target='_blank' rel='noopener' aria-label='WhatsApp Rockybco'><span class='icon icon-whatsapp'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                   <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.764.459 3.487 1.333 5.004L2 22l5.133-1.347a9.923 9.923 0 004.877 1.28h.005c5.507 0 9.99-4.478 9.99-9.985 0-2.667-1.039-5.176-2.926-7.062A9.926 9.926 0 0012.012 2zm5.827 14.167c-.247.695-1.226 1.272-1.996 1.439-.53.114-1.222.204-3.553-.761-2.981-1.234-4.901-4.264-5.05-4.462-.147-.198-1.206-1.607-1.206-3.065 0-1.459.761-2.176 1.03-2.47.27-.295.589-.368.785-.368.196 0 .393.002.564.01.182.008.428-.069.67.511.247.592.836 2.04.91 2.188.074.148.123.321.025.518-.098.197-.148.321-.295.494-.148.173-.31.387-.442.52-.148.148-.302.309-.13.605.173.296.767 1.267 1.65 2.054 1.135 1.011 2.091 1.325 2.387 1.472.296.148.468.124.64-.074.173-.198.739-.863.935-1.16.197-.296.394-.247.665-.148.271.099 1.722.813 2.017.961.295.148.492.222.565.345.074.123.074.717-.173 1.412z" />
                 </svg></span></a><a href='https://linkedin.com/in/iamrockyb' target='_blank' rel='noopener' aria-label='LinkedIn Rockybco'><span class='icon icon-linkedin'><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -1280,6 +1343,38 @@
         const r = hero.getBoundingClientRect();
         dot.style.transform = `translate(${e.clientX - r.left}px, ${e.clientY - r.top}px)`;
       });
+    })();
+
+    /* Stat counters — count up once the stats band scrolls into view */
+    (function () {
+      const nums = document.querySelectorAll('.stat-num[data-count-to]');
+      if (!nums.length) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) return; /* final values are already in the markup */
+      const animate = el => {
+        const target = parseInt(el.dataset.countTo, 10);
+        const suffix = el.dataset.suffix || '';
+        if (isNaN(target)) return;
+        const duration = 1100;
+        const start = performance.now();
+        const tick = now => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        el.textContent = '0' + suffix;
+        requestAnimationFrame(tick);
+      };
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animate(entry.target);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      nums.forEach(el => io.observe(el));
     })();
   </script>
 </body>

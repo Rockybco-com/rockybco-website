@@ -188,21 +188,83 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transform: translateY(20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
-.stagger-children.visible > *:nth-child(1) { transition-delay: 0ms;   opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(2) { transition-delay: 50ms;  opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(3) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(4) { transition-delay: 150ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(5) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(6) { transition-delay: 250ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(7)  { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(8)  { transition-delay: 350ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(9)  { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(10) { transition-delay: 450ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(11) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(12) { transition-delay: 550ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(13) { transition-delay: 600ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(14) { transition-delay: 650ms; opacity: 1; transform: translateY(0); }
-.stagger-children.visible > *:nth-child(15) { transition-delay: 700ms; opacity: 1; transform: translateY(0); }
+/* Single visible rule so hover transforms on children (cards, chips) still win */
+.stagger-children.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger-children.visible > *:nth-child(1)  { transition-delay: 0ms; }
+.stagger-children.visible > *:nth-child(2)  { transition-delay: 50ms; }
+.stagger-children.visible > *:nth-child(3)  { transition-delay: 100ms; }
+.stagger-children.visible > *:nth-child(4)  { transition-delay: 150ms; }
+.stagger-children.visible > *:nth-child(5)  { transition-delay: 200ms; }
+.stagger-children.visible > *:nth-child(6)  { transition-delay: 250ms; }
+.stagger-children.visible > *:nth-child(7)  { transition-delay: 300ms; }
+.stagger-children.visible > *:nth-child(8)  { transition-delay: 350ms; }
+.stagger-children.visible > *:nth-child(9)  { transition-delay: 400ms; }
+.stagger-children.visible > *:nth-child(10) { transition-delay: 450ms; }
+.stagger-children.visible > *:nth-child(11) { transition-delay: 500ms; }
+.stagger-children.visible > *:nth-child(12) { transition-delay: 550ms; }
+.stagger-children.visible > *:nth-child(13) { transition-delay: 600ms; }
+.stagger-children.visible > *:nth-child(14) { transition-delay: 650ms; }
+.stagger-children.visible > *:nth-child(15) { transition-delay: 700ms; }
+
+/* Directional / scale reveal variants (drop-in on any .reveal element) */
+.reveal.from-left   { transform: translateX(-36px); }
+.reveal.from-right  { transform: translateX(36px); }
+.reveal.from-scale  { transform: scale(0.94); }
+.reveal.from-left.visible,
+.reveal.from-right.visible,
+.reveal.from-scale.visible { transform: none; }
+
+/* Animated accent line under section headlines that reveal on scroll */
+.section-headline { position: relative; }
+.section-headline.reveal::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -18px;
+  width: 72px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--cream), transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.8s ease-out 0.25s;
+  pointer-events: none;
+}
+.section-headline.reveal.on-cream::after {
+  background: linear-gradient(90deg, var(--teal), transparent);
+}
+.section-headline.reveal.visible::after { transform: scaleX(1); }
+
+/* Sheen sweep on solid buttons */
+.btn-primary, .btn-teal { position: relative; overflow: hidden; }
+.btn-primary::before, .btn-teal::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+.btn-primary:hover::before, .btn-teal:hover::before { transform: skewX(-20deg) translateX(420%); }
+
+/* Respect reduced-motion: show everything instantly, no transitions */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .section-headline.reveal::after { transform: scaleX(1) !important; transition: none !important; }
+  .btn-primary::before, .btn-teal::before { display: none; }
+}
 
 /* Image placeholder */
 .img-placeholder {
