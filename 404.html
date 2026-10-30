@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found — Rockybco | Precision. Identity. Signal.</title>
-  <meta name="description" content="Page not found. The page you are looking for does not exist or has moved. Rockybco — brand identity &amp; web design studio in Ilorin, Kwara State, Nigeria.">
+  <meta name="description" content="Page not found. Seems this page has lost its identity — no worries, great identities are all about making the right impression. Rockybco — brand identity &amp; web design studio, Ilorin, Nigeria.">
   <meta name="robots" content="noindex, follow">
   <!-- Open Graph -->
   <meta property="og:title" content="Page Not Found — Rockybco">
@@ -27,6 +27,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <!-- Root-absolute URLs: Vercel serves this file at the original deep path, so relative links would break -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/image/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/image/apple-touch-icon.png">
   <style>
     .nf {
       background:
@@ -39,18 +42,6 @@
       justify-content: center;
       text-align: center;
       padding: 140px 0 100px;
-    }
-    .nf-label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--cream-dim);
-      display: block;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: nfUp 0.6s ease-out 0s forwards;
     }
     .nf-code {
       font-family: var(--font-head);
@@ -72,9 +63,18 @@
       font-size: clamp(24px, 3.5vw, 38px);
       font-weight: 600;
       color: var(--cream);
-      margin-bottom: 16px;
+      max-width: 760px;
+      margin: 0 auto 16px;
       opacity: 0;
       animation: nfUp 0.7s ease-out 0.25s forwards;
+    }
+    .nf h1 em {
+      display: block;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.78em;
+      margin-top: 8px;
+      opacity: 0.92;
     }
     .nf p {
       font-family: var(--font-body);
@@ -119,10 +119,9 @@
   <nav class='nav-links' aria-label='Primary'><a href='/index.html' class='nav-link'>Home</a><a href='/work.html' class='nav-link'>Portfolio</a><a href='/about.html' class='nav-link'>About</a><a href='/brief.html' class='nav-link'>Contact</a></nav><!-- 404 -->
   <section class='nf'>
     <div class='container'>
-      <span class='nf-label'>Signal lost</span>
       <div class='nf-code'>4<em>0</em>4</div>
-      <h1>This page doesn't exist.</h1>
-      <p><span>The link may be broken, or the page has moved. Head back home, see the work, or start a project — I reply within 24 hours.</span></p>
+      <h1>Page Not Found.<em>But your brand can be unforgettable.</em></h1>
+      <p><span>Seems this page has lost its identity... No worries, great identities are all about making the right impression.</span></p>
       <div class='nf-ctas'><a href='/index.html' class='btn btn-primary'>&larr; Back to Home</a><a href='/work.html' class='btn btn-ghost'>View Selected Work &rarr;</a><a href='/brief.html' class='btn btn-ghost'>Start a Project &rarr;</a></div>
     </div>
   </section><!-- FOOTER -->
